@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>HYROX Fueling Dashboard | Marrakech to Birmingham</title>
+  <style>
+    :root {
+      --bg: #0d0f12;
+      --card-bg: #161a22;
+      --card-border: #232936;
+      --text-main: #f0f3f6;
+      --text-muted: #8b949e;
+      --accent: #ffb703;
+      --green: #2ea043;
+      --red: #f85149;
+      --cyan: #38bdf8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text-main); padding-bottom: 60px; }
+    header { background: #11141a; border-bottom: 1px solid var(--card-border); padding: 14px 18px; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
+    .badge { font-size: 0.72rem; font-weight: 700; background: var(--accent); color: #000; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+    
+    /* Navigation Bar */
+    .nav-tabs { display: flex; overflow-x: auto; gap: 8px; padding: 12px 16px; background: #12151c; border-bottom: 1px solid var(--card-border); scrollbar-width: none; }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .tab-btn { flex: 0 0 auto; padding: 8px 14px; border-radius: 20px; background: #1a1f29; border: 1px solid var(--card-border); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .tab-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+    .tab-btn.race { border-color: var(--cyan); color: var(--cyan); }
+    .tab-btn.race.active { background: var(--cyan); color: #000; }
+
+    .container { padding: 16px; max-width: 640px; margin: 0 auto; }
+    
+    /* Macro Summary Card */
+    .macro-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; }
+    .macro-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; text-align: center; }
+    .macro-box { background: #101319; border: 1px solid #1f2532; border-radius: 8px; padding: 8px 4px; }
+    .macro-val { font-size: 1.05rem; font-weight: 800; color: var(--accent); }
+    .macro-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+    
+    /* Hydration Bar */
+    .tracker-card { background: #101622; border: 1px solid #1f2e47; border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+    .btn-water { background: #1e3a5f; color: #7dd3fc; border: 1px solid #2b4c7e; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
+    .btn-water:active { transform: scale(0.96); }
+
+    /* Meal Card */
+    .meal-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+    .meal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .meal-title { font-size: 0.95rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .meal-time { font-size: 0.75rem; color: var(--text-muted); }
+    .meal-desc { font-size: 0.88rem; color: #c9d1d9; line-height: 1.45; margin-bottom: 10px; }
+    
+    /* Native Details Swaps */
+    details { background: #11141c; border-radius: 6px; border-left: 3px solid var(--accent); padding: 8px 12px; font-size: 0.82rem; color: #cbd5e1; }
+    summary { font-weight: 700; color: #93c5fd; cursor: pointer; outline: none; margin-bottom: 4px; list-style: none; display: flex; align-items: center; gap: 6px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::before { content: "🔄"; font-size: 0.75rem; }
+
+    /* Gut Shield */
+    .shield-btn { background: #261517; border: 1px solid #4a1d24; color: #f87171; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; cursor: pointer; }
+    .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 200; padding: 20px; align-items: center; justify-content: center; }
+    .modal.active { display: flex; }
+    .modal-box { background: var(--card-bg); border: 1px solid #3d2226; border-radius: 12px; padding: 20px; max-width: 440px; }
+
+    /* Day visibility controller */
+    .day-pane { display: none; }
+    .day-pane.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div style="font-weight: 800; font-size: 1.05rem; letter-spacing: -0.5px;">HYROX FUEL</div>
+      <div style="font-size: 0.72rem; color: var(--text-muted);">Target: 70.8kg @ 10.8% BFM</div>
+    </div>
+    <button class="shield-btn" onclick="toggleModal(true)">🛡️ Gut Protocol</button>
+  </header>
+
+  <!-- 7 TABS -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchDay('d26', this)">26 Oct</button>
+    <button class="tab-btn" onclick="switchDay('d27', this)">27 Oct</button>
+    <button class="tab-btn" onclick="switchDay('d28', this)">28 Oct</button>
+    <button class="tab-btn" onclick="switchDay('d29', this)">29 Oct (Load)</button>
+    <button class="tab-btn" onclick="switchDay('d30', this)">30 Oct (Load)</button>
+    <button class="tab-btn" onclick="switchDay('d31', this)">31 Oct (UK Eve)</button>
+    <button class="tab-btn race" onclick="switchDay('d01', this)">1 Nov (Race)</button>
+  </div>
+
+  <div class="container">
+
+    <!-- HYDRATION TRACKER (Global) -->
+    <div class="tracker-card">
+      <div>
+        <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Bottled Water Log</div>
+        <div style="font-size: 1.15rem; font-weight: 800; color: #7dd3fc;"><span id="loggedWater">0</span> / 3500 ml</div>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn-water" onclick="addWater(250)">+250ml</button>
+        <button class="btn-water" style="background:#1b202a; color:#8b949e; border-color:#2a3243;" onclick="resetWater()">↺</button>
+      </div>
+    </div>
+
+    <!-- ==================== DAY 1: 26 OCT ==================== -->
+    <div id="d26" class="day-pane active">
+      <div class="macro-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.85rem; font-weight:700;">26 OCT — ARRIVAL & TAPER</span>
+          <span class="badge">2,400 KCAL</span>
+        </div>
+        <div class="macro-grid">
+          <div class="macro-box"><div class="macro-val">310g</div><div class="macro-label">Carbs</div></div>
+          <div class="macro-box"><div class="macro-val">140g</div><div class="macro-label">Protein</div></div>
+          <div class="macro-box"><div class="macro-val">65g</div><div class="macro-label">Fats</div></div>
+          <div class="macro-box"><div class="macro-val" style="color:var(--cyan);">3.5L</div><div class="macro-label">Water</div></div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍳 Breakfast</div><div class="meal-time">08:30</div></div>
+        <div class="meal-desc">3 freshly prepared eggs (omelette or boiled) + 1 Moroccan khobz flatbread with honey + 1 peeled orange.</div>
+        <details><summary>Swaps & Alternatives</summary>No fresh eggs? 200g Greek yogurt/labneh with honey and bread, or 1 scoop travel whey isolate in bottled water.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍗 Lunch</div><div class="meal-time">13:00</div></div>
+        <div class="meal-desc">Charcoal-grilled chicken brochettes (skewers) + white rice + steaming bowl of Harira soup (clean sodium & lentils).</div>
+        <details><summary>Swaps & Alternatives</summary>No rice? Double portion of hot Harira soup with khobz flatbread for dipping.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍲 Dinner</div><div class="meal-time">19:30</div></div>
+        <div class="meal-desc">Piping-hot Chicken & Potato Tagine cooked hot in clay. Focus on lean chicken, potatoes, and bread. Skip oily sauce residue.</div>
+        <details><summary>Swaps & Alternatives</summary>Dining in Gueliz/Modern area? Grilled chicken breast with plain pasta pomodoro or baked potato.</details>
+      </div>
+    </div>
+
+    <!-- ==================== DAY 2: 27 OCT ==================== -->
+    <div id="d27" class="day-pane">
+      <div class="macro-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.85rem; font-weight:700;">27 OCT — TAPER CALIBRATION</span>
+          <span class="badge">2,350 KCAL</span>
+        </div>
+        <div class="macro-grid">
+          <div class="macro-box"><div class="macro-val">300g</div><div class="macro-label">Carbs</div></div>
+          <div class="macro-box"><div class="macro-val">140g</div><div class="macro-label">Protein</div></div>
+          <div class="macro-box"><div class="macro-val">60g</div><div class="macro-label">Fats</div></div>
+          <div class="macro-box"><div class="macro-val" style="color:var(--cyan);">3.5L</div><div class="macro-label">Water</div></div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍳 Breakfast</div><div class="meal-time">08:30</div></div>
+        <div class="meal-desc">3 scrambled eggs + 2 slices toasted khobz with fruit jam + 1 peeled banana.</div>
+        <details><summary>Swaps & Alternatives</summary>Buffet eggs looking cold? Ask for hard-boiled eggs hot from the shell, or oatmeal made with boiling bottled water.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🥩 Lunch</div><div class="meal-time">13:00</div></div>
+        <div class="meal-desc">Grilled lean beef skewers + roasted white/sweet potatoes + thoroughly cooked carrots.</div>
+        <details><summary>Swaps & Alternatives</summary>Canned tuna in spring water (carried/bought) with 1 white baguette and a peeled banana.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍲 Dinner</div><div class="meal-time">19:30</div></div>
+        <div class="meal-desc">Lemon & chicken tagine. Eat the lean chicken meat, carrots, and potatoes with dry bread.</div>
+        <details><summary>Swaps & Alternatives</summary>Rotisserie roast chicken (skin removed) with double side of plain white rice.</details>
+      </div>
+    </div>
+
+    <!-- ==================== DAY 3: 28 OCT ==================== -->
+    <div id="d28" class="day-pane">
+      <div class="macro-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.85rem; font-weight:700;">28 OCT — PRE-LOAD TRANSITION</span>
+          <span class="badge">2,450 KCAL</span>
+        </div>
+        <div class="macro-grid">
+          <div class="macro-box"><div class="macro-val">340g</div><div class="macro-label">Carbs</div></div>
+          <div class="macro-box"><div class="macro-val">135g</div><div class="macro-label">Protein</div></div>
+          <div class="macro-box"><div class="macro-val">55g</div><div class="macro-label">Fats</div></div>
+          <div class="macro-box"><div class="macro-val" style="color:var(--cyan);">3.5L</div><div class="macro-label">Water</div></div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍳 Breakfast</div><div class="meal-time">08:30</div></div>
+        <div class="meal-desc">3 eggs omelette + 2 khobz flatbreads drizzled with strawberry jam or honey + black coffee.</div>
+        <details><summary>Swaps & Alternatives</summary>2 msemen pancakes with honey + 1 travel whey protein shake in bottled water.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍗 Lunch</div><div class="meal-time">13:00</div></div>
+        <div class="meal-desc">Steamed chicken skewers with white rice + 4 Medjool dates eaten immediately after.</div>
+        <details><summary>Swaps & Alternatives</summary>No dates? 300ml sealed commercial apple juice or 2 ripe bananas.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍲 Dinner</div><div class="meal-time">19:30</div></div>
+        <div class="meal-desc">Hot Harira soup + Chicken tagine with double potatoes. Limit olive oil gravy.</div>
+        <details><summary>Swaps & Alternatives</summary>Plain jacket potato (no butter) with grilled chicken breast and salt.</details>
+      </div>
+    </div>
+
+    <!-- ==================== DAY 4: 29 OCT ==================== -->
+    <div id="d29" class="day-pane">
+      <div class="macro-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.85rem; font-weight:700;">29 OCT — CARB LOAD DAY 1 (SURGE)</span>
+          <span class="badge" style="background:var(--cyan); color:#000;">2,650 KCAL</span>
+        </div>
+        <div class="macro-grid">
+          <div class="macro-box"><div class="macro-val" style="color:var(--cyan);">520g</div><div class="macro-label">Carbs</div></div>
+          <div class="macro-box"><div class="macro-val">125g</div><div class="macro-label">Protein</div></div>
+          <div class="macro-box"><div class="macro-val" style="color:#ef4444;">40g</div><div class="macro-label">Fats (Low)</div></div>
+          <div class="macro-box"><div class="macro-val">3.5L</div><div class="macro-label">Water</div></div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🥞 Breakfast</div><div class="meal-time">08:00</div></div>
+        <div class="meal-desc">2 poached/boiled eggs + 2 pieces khobz or msemen drizzled heavily with honey + 2 peeled bananas.</div>
+        <details><summary>Swaps & Alternatives</summary>80g oats soaked in boiling bottled water with 3 tbsp honey and sliced banana.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍯 Mid-Morning Fuel</div><div class="meal-time">11:30</div></div>
+        <div class="meal-desc">4 large Medjool dates (~75g rapid carbs) + 300ml sealed apple juice.</div>
+        <details><summary>Swaps & Alternatives</summary>4 plain rice cakes with seedless jam.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍚 Lunch</div><div class="meal-time">13:30</div></div>
+        <div class="meal-desc">Steamed fine couscous with lean chicken breast and cooked carrots. (Couscous is pure low-fiber glycogen fuel).</div>
+        <details><summary>Swaps & Alternatives</summary>Bistro option: 180g white pasta with plain tomato marinara sauce + grilled chicken.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍌 Afternoon Snack</div><div class="meal-time">17:00</div></div>
+        <div class="meal-desc">2 slices white bread or khobz with fruit jam + 1 banana.</div>
+        <details><summary>Swaps & Alternatives</summary>50g Haribo / gummy sweets (zero fat, 45g pure fast glycogen).</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍗 Dinner</div><div class="meal-time">19:30</div></div>
+        <div class="meal-desc">Double white rice portion (300g cooked) + 140g lean chicken brochettes with salt.</div>
+        <details><summary>Swaps & Alternatives</summary>Boiled white potatoes (skinned, 400g) with 1 can drained tuna in water.</details>
+      </div>
+    </div>
+
+    <!-- ==================== DAY 5: 30 OCT ==================== -->
+    <div id="d30" class="day-pane">
+      <div class="macro-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.85rem; font-weight:700;">30 OCT — CARB LOAD DAY 2 (FLIGHT HOME)</span>
+          <span class="badge" style="background:var(--cyan); color:#000;">2,700 KCAL</span>
+        </div>
+        <div class="macro-grid">
+          <div class="macro-box"><div class="macro-val" style="color:var(--cyan);">540g</div><div class="macro-label">Carbs</div></div>
+          <div class="macro-box"><div class="macro-val">120g</div><div class="macro-label">Protein</div></div>
+          <div class="macro-box"><div class="macro-val" style="color:#ef4444;">38g</div><div class="macro-label">Fats (Low)</div></div>
+          <div class="macro-box"><div class="macro-val">3.5L</div><div class="macro-label">Water</div></div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🥞 Breakfast (Marrakech)</div><div class="meal-time">08:00</div></div>
+        <div class="meal-desc">3 pieces khobz/white bread with honey and jam + 2 boiled eggs + 1 ripe banana.</div>
+        <details><summary>Swaps & Alternatives</summary>Pancakes with syrup + 20g whey protein in water.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">✈️ Airport / In-Flight Fuel</div><div class="meal-time">12:30 – 16:30</div></div>
+        <div class="meal-desc">Eat 6 Medjool dates throughout travel + 1 white baguette roll + sealed commercial electrolyte sports drink.</div>
+        <details><summary>Swaps & Alternatives</summary>Carry-on rice cakes with jam + 2 bananas bought airside.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍝 Dinner (Back in UK)</div><div class="meal-time">19:30</div></div>
+        <div class="meal-desc">250g plain white pasta or basmati rice + 130g chicken breast with tomato passata sauce. Add salt for sodium loading.</div>
+        <details><summary>Swaps & Alternatives</summary>4 slices white sourdough bread toasted with jam + 1 can drained tuna.</details>
+      </div>
+    </div>
+
+    <!-- ==================== DAY 6: 31 OCT ==================== -->
+    <div id="d31" class="day-pane">
+      <div class="macro-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.85rem; font-weight:700;">31 OCT — FINAL 24H SATURATION (UK EVE)</span>
+          <span class="badge" style="background:var(--accent); color:#000;">2,600 KCAL</span>
+        </div>
+        <div class="macro-grid">
+          <div class="macro-box"><div class="macro-val" style="color:var(--accent);">500g</div><div class="macro-label">Carbs</div></div>
+          <div class="macro-box"><div class="macro-val">120g</div><div class="macro-label">Protein</div></div>
+          <div class="macro-box"><div class="macro-val" style="color:#ef4444;">35g</div><div class="macro-label">Fats (Low)</div></div>
+          <div class="macro-box"><div class="macro-val">3.0L</div><div class="macro-label">Water</div></div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🥣 Breakfast</div><div class="meal-time">08:30</div></div>
+        <div class="meal-desc">80g rolled oats cooked in water + 2 tbsp honey + 1 sliced banana + 1 scoop whey isolate.</div>
+        <details><summary>Swaps & Alternatives</summary>2 white plain bagels toasted with seedless jam + 2 boiled eggs.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🥯 Mid-Morning</div><div class="meal-time">11:30</div></div>
+        <div class="meal-desc">1 large white bagel with honey or jam + 250ml pure apple juice.</div>
+        <details><summary>Swaps & Alternatives</summary>4 large Medjool dates + 1 banana.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍚 Lunch</div><div class="meal-time">13:30</div></div>
+        <div class="meal-desc">250g cooked jasmine/basmati rice + 140g lean chicken breast + splash of soy sauce (sodium preload).</div>
+        <details><summary>Swaps & Alternatives</summary>Large baked jacket potato (skin discarded) + 1 can drained tuna in spring water + salt.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">⚡ Afternoon Fuel</div><div class="meal-time">16:30</div></div>
+        <div class="meal-desc">4 rice cakes with seedless jam + 500ml water mixed with 1 high-sodium electrolyte tablet.</div>
+        <details><summary>Swaps & Alternatives</summary>2 slices white toast with honey.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🍝 Pre-Race Dinner (Finish by 7 PM)</div><div class="meal-time">18:30</div></div>
+        <div class="meal-desc">250g plain white penne pasta with tomato passata + 120g grilled chicken. Zero heavy spices, zero cruciferous veg. Cut fluids by 8 PM for deep sleep.</div>
+        <details><summary>Swaps & Alternatives</summary>300g white rice with grilled white fish (cod/haddock).</details>
+      </div>
+    </div>
+
+    <!-- ==================== DAY 7: 1 NOV ==================== -->
+    <div id="d01" class="day-pane">
+      <div class="macro-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.85rem; font-weight:700; color:var(--cyan);">1 NOV — RACE DAY | BIRMINGHAM</span>
+          <span class="badge" style="background:var(--cyan); color:#000;">RACE PROTOCOL</span>
+        </div>
+        <div class="macro-grid">
+          <div class="macro-box"><div class="macro-val" style="color:var(--cyan);">360g</div><div class="macro-label">Carbs</div></div>
+          <div class="macro-box"><div class="macro-val">100g</div><div class="macro-label">Protein</div></div>
+          <div class="macro-box"><div class="macro-val">25g</div><div class="macro-label">Fats</div></div>
+          <div class="macro-box"><div class="macro-val">Sips</div><div class="macro-label">Hydration</div></div>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🥯 Pre-Race Meal (3.5h Before Start)</div><div class="meal-time">T - 3.5 Hours</div></div>
+        <div class="meal-desc">75g plain white bagel with 2 tbsp seedless jam + 1 ripe banana + black coffee + 400ml water with 1 electrolyte tab. Zero fat, zero dairy.</div>
+        <details><summary>Swaps & Alternatives</summary>60g instant oats cooked in water with 2 tbsp honey + 1 sliced banana.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">⚡ Final Primer (60m Before Start)</div><div class="meal-time">T - 60 Mins</div></div>
+        <div class="meal-desc">1 carbohydrate energy gel (25–30g carbs) or 2 Medjool dates + 150ml water sip. Stop drinking large volumes to prevent bladder fullness.</div>
+        <details><summary>Swaps & Alternatives</summary>4 jelly babies / gummy sweets chewed thoroughly.</details>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-head"><div class="meal-title">🏁 Post-Race Recovery</div><div class="meal-time">Within 45m</div></div>
+        <div class="meal-desc">500ml chocolate milk or 1 scoop whey isolate + 1 large banana + bag of salted pretzels (sodium replenishment).</div>
+        <details><summary>Swaps & Alternatives</summary>4:1 carb-to-protein commercial recovery shake.</details>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GUT SHIELD MODAL -->
+  <div class="modal" id="gutModal" onclick="toggleModal(false)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <h3 style="color: var(--red); margin-bottom: 8px;">🛡️ Marrakech Gut Shield</h3>
+      <p style="font-size: 0.82rem; color: #cbd5e1; margin-bottom: 12px;">Zero GI issues 48h out is worth more than +100g carbs.</p>
+      <ul style="font-size: 0.82rem; color: #e2e8f0; line-height: 1.6; padding-left: 18px;">
+        <li><strong>No raw salads:</strong> Salade marocaine is rinsed in tap water. Cooked root vegetables only.</li>
+        <li><strong>Piping hot:</strong> Brochettes and tagines must come straight off charcoal/flame.</li>
+        <li><strong>Bottled water only:</strong> Inspect factory seal. Use for brushing teeth. Decline drink ice.</li>
+        <li><strong>Electrolytes:</strong> Add hydration tablets to 1L bottled water daily in the heat.</li>
+      </ul>
+      <button style="margin-top: 16px; width: 100%; padding: 8px; background: #261517; color:#f87171; border:1px solid #4a1d24; border-radius:6px; font-weight:700;" onclick="toggleModal(false)">Got It</button>
+    </div>
+  </div>
+
+  <!-- ULTRA-RELIABLE 10-LINE SCRIPT -->
+  <script>
+    function switchDay(dayId, btn) {
+      document.querySelectorAll('.day-pane').forEach(function(pane) {
+        pane.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      var target = document.getElementById(dayId);
+      if (target) target.classList.add('active');
+      if (btn) btn.classList.add('active');
+    }
+
+    var totalWater = 0;
+    function addWater(ml) {
+      totalWater += ml;
+      document.getElementById('loggedWater').innerText = totalWater;
+    }
+    function resetWater() {
+      totalWater = 0;
+      document.getElementById('loggedWater').innerText = totalWater;
+    }
+
+    function toggleModal(show) {
+      var modal = document.getElementById('gutModal');
+      if (modal) modal.classList.toggle('active', show);
+    }
+  </script>
+</body>
+</html>
