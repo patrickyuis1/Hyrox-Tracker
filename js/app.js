@@ -15,7 +15,9 @@
   const HOLIDAY_KEY = 'hyroxHoliday_v1';
   const PROFILES_KEY = 'hyroxProfiles_v1';
   const ACTIVE_PROFILE_KEY = 'hyroxActiveProfile_v1';
-  const LOCKED_WEEKS = [13, 18]; // race weeks - fixed real-world date, not swappable
+  // Race weeks are fixed to the real race date, so swapping is switched off for them.
+  const RACES = PROGRAM.races || [{ id: 'race1', label: 'Race 1', date: PROGRAM.race1 }, { id: 'race2', label: 'Race 2', date: PROGRAM.race2 }];
+  const LOCKED_WEEKS = PROGRAM.weeks.filter(w => w.days.some(d => RACES.some(r => r.date === d.date))).map(w => w.weekNum);
 
   function escapeHtml(s){
     return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -260,6 +262,58 @@
   /* ---------------- state ---------------- */
   let viewDate = clampISO(todayISO());
   let swapPanelOpen = false;
+  let currentTab = 'plan';
+  let sheetOpener = null;
+
+  /* ---------------- modules (Fuel, Mobility) share these helpers ---------------- */
+  const CTX = { nsKey, todayISO, fromISO, toISO, addDays, fmtShort, escapeHtml, getContentFor };
+  FuelUI.init(CTX);
+  MobilityUI.init(CTX);
+
+  /* ---------------- tabs ---------------- */
+  const VIEWS = { plan: 'planView', fuel: 'fuelView', mobility: 'mobilityView' };
+  function showTab(name, opts){
+    opts = opts || {};
+    currentTab = name;
+    Object.keys(VIEWS).forEach(k => { document.getElementById(VIEWS[k]).hidden = (k !== name); });
+    document.querySelectorAll('.tabbar .tab').forEach(b => {
+      const on = b.getAttribute('data-tab') === name;
+      b.classList.toggle('is-active', on);
+      if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+    });
+    document.getElementById('todayBtn').hidden = (name !== 'plan');
+    if (name === 'plan') renderAll();
+    if (name === 'fuel'){
+      if (opts.raceId) FuelUI.select(opts.raceId, opts.offset);
+      FuelUI.renderTab(document.getElementById('fuelView'));
+    }
+    if (name === 'mobility'){
+      const pref = opts.routine || (opts.fromDay ? MobilityUI.routineForSession(getContentFor(viewDate).sessionType) : null);
+      MobilityUI.renderTab(document.getElementById('mobilityView'), pref);
+    }
+    try { window.scrollTo(0, 0); } catch(e){}
+  }
+
+  /* ---------------- routine sheet ---------------- */
+  function openRoutine(key, opener){
+    const r = ROUTINES[key];
+    if (!r) return;
+    sheetOpener = opener || null;
+    document.getElementById('sheetTitle').textContent = r.name;
+    document.getElementById('sheetMeta').textContent = `${r.duration} · ${r.when}`;
+    document.getElementById('sheetBody').innerHTML = MobilityUI.stepsHTML(key);
+    document.getElementById('sheet').hidden = false;
+    document.body.classList.add('sheet-open');
+    document.getElementById('sheetCloseBtn').focus();
+  }
+  function closeSheet(){
+    const sheet = document.getElementById('sheet');
+    if (sheet.hidden) return;
+    sheet.hidden = true;
+    document.body.classList.remove('sheet-open');
+    if (sheetOpener && document.body.contains(sheetOpener)) sheetOpener.focus();
+    sheetOpener = null;
+  }
 
   /* ---------------- profile screen + boot flow ---------------- */
   function renderProfileList(){
@@ -312,7 +366,8 @@
     document.getElementById('activeProfileName').textContent = active ? active.name : '';
     viewDate = clampISO(todayISO());
     swapPanelOpen = false;
-    renderAll();
+    closeSheet();
+    showTab('plan');
   }
 
   function addProfileFromInput(){
@@ -346,7 +401,7 @@
       const days = Math.round((fromISO(PROGRAM_START) - fromISO(real)) / 86400000);
       el.innerHTML = `<div class="banner">Program starts <b>${fmtLong(PROGRAM_START)}</b> — <b>${days} day${days===1?'':'s'}</b> to go. Previewing Week 1, Day 1.</div>`;
     } else if (real > PROGRAM_END){
-      el.innerHTML = `<div class="banner">Block complete — both races done. This is the final logged day.</div>`;
+      el.innerHTML = `<div class="banner">Season complete — all ${RACES.length} races done. This is the final logged day.</div>`;
     } else {
       el.innerHTML = '';
     }
@@ -358,7 +413,7 @@
     const weekPosInPhase = phaseObj.weeks.indexOf(week.weekNum) + 1;
 
     document.getElementById('phaseName').textContent = phaseObj.name;
-    document.getElementById('phaseWeek').textContent = `Week ${week.weekNum} / 18 · Phase wk ${weekPosInPhase}/${phaseObj.weeks.length}`;
+    document.getElementById('phaseWeek').textContent = `Week ${week.weekNum} / ${PROGRAM.weeks.length} · Phase wk ${weekPosInPhase}/${phaseObj.weeks.length}`;
 
     const flatIdx = FLAT_DATES.indexOf(viewDate);
     const pct = ((flatIdx+1) / FLAT_DATES.length) * 100;
@@ -366,12 +421,11 @@
 
     const real = todayISO();
     let countdown;
-    if (real <= PROGRAM.race1){
-      const d = Math.round((fromISO(PROGRAM.race1) - fromISO(real)) / 86400000);
-      countdown = d === 0 ? 'RACE 1 IS TODAY' : `${d} day${d===1?'':'s'} to Race 1`;
-    } else if (real <= PROGRAM.race2){
-      const d = Math.round((fromISO(PROGRAM.race2) - fromISO(real)) / 86400000);
-      countdown = d === 0 ? 'RACE 2 IS TODAY' : `${d} day${d===1?'':'s'} to Race 2`;
+    const nextRace = RACES.find(r => real <= r.date);
+    if (nextRace){
+      const d = Math.round((fromISO(nextRace.date) - fromISO(real)) / 86400000);
+      const name = nextRace.city ? `${nextRace.city}` : nextRace.label;
+      countdown = d === 0 ? `${name.toUpperCase()} IS TODAY` : `${d} day${d===1?'':'s'} to ${name}`;
     } else {
       countdown = 'Season complete';
     }
@@ -467,6 +521,7 @@
           ${b.detail ? `<div class="station-detail">${b.detail}</div>` : ''}
           ${b.cue ? `<div class="station-cue">${b.cue}</div>` : ''}
           ${videoLink}
+          ${MobilityUI.routineForBlock(b.name) ? `<button class="routine-link" data-routine="${MobilityUI.routineForBlock(b.name)}">Show the moves ›</button>` : ''}
           ${logInputHTML(b, dateStr)}
         </div>
       </div>`;
@@ -485,6 +540,7 @@
         <div class="station-body">
           <div class="station-name">${b.name}</div>
           <div class="station-detail">${b.detail || ''}</div>
+          <button class="routine-link" data-routine="offday">Off-day mobility · 20 min ›</button>
         </div>
       </div>`;
   }
@@ -588,6 +644,18 @@
     document.getElementById('sessionTitle').textContent = content.title;
     document.getElementById('sessionSubtitle').textContent = content.subtitle || '';
 
+    const links = document.getElementById('sessionLinks');
+    const linkDefs = {
+      run: [['runWarmup', 'Before: run warm-up · 6 min'], ['cooldown', 'After: cool-down · 10 min']],
+      race: [['raceWarmup', 'Race-day warm-up · 15 min']],
+    }[content.sessionType] || [];
+    links.innerHTML = linkDefs.map(([k, label]) => `<button class="routine-link pill" data-routine="${k}">${label} ›</button>`).join('')
+      + (content.sessionType === 'race' ? `<button class="routine-link pill" data-open-fuel="1">Race-day fuel timeline ›</button>` : '');
+    links.hidden = !links.innerHTML;
+
+    const fuelSlot = document.getElementById('fuelToday');
+    fuelSlot.innerHTML = FuelUI.todayCardHTML(viewDate);
+
     const rail = document.getElementById('stationRail');
     if (content.sessionType === 'rest'){
       rail.innerHTML = restBlockHTML(content, viewDate);
@@ -621,6 +689,14 @@
     if (timeInput){
       timeInput.addEventListener('change', () => saveRaceTime(viewDate, timeInput.value));
     }
+    [rail, links].forEach(scope => scope.querySelectorAll('[data-routine]').forEach(btn => {
+      btn.addEventListener('click', () => openRoutine(btn.getAttribute('data-routine'), btn));
+    }));
+    const fuelBtns = [...fuelSlot.querySelectorAll('[data-fuel-race]'), ...links.querySelectorAll('[data-open-fuel]')];
+    fuelBtns.forEach(btn => btn.addEventListener('click', () => {
+      const hit = FuelUI.raceWindowFor(viewDate);
+      showTab('fuel', hit ? { raceId: hit.race.id, offset: hit.offset } : {});
+    }));
 
     renderSwapUI();
     renderHolidayUI();
@@ -682,6 +758,7 @@
     renderSwapUI();
   });
   document.getElementById('switchProfileBtn').addEventListener('click', () => {
+    closeSheet();
     showProfileScreen();
   });
   document.getElementById('holidayToggleBtn').addEventListener('click', () => {
@@ -691,7 +768,112 @@
   document.getElementById('holidayReasonInput').addEventListener('change', (e) => {
     if (isHoliday(viewDate)) setHoliday(viewDate, true, e.target.value.trim());
   });
+  document.querySelectorAll('.tabbar .tab').forEach(b => b.addEventListener('click', () => {
+    const t = b.getAttribute('data-tab');
+    showTab(t, t === 'mobility' ? { fromDay: true } : {});
+  }));
+  document.querySelectorAll('[data-sheet-close]').forEach(el => el.addEventListener('click', closeSheet));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSheet(); });
   document.getElementById('addProfileBtn').addEventListener('click', addProfileFromInput);
+
+  /* ---------------- backup & restore (every profile on this device) ---------------- */
+  const BACKUP_APP = 'hyrox-daily';
+  function dataStatus(msg, isError){
+    const el = document.getElementById('dataStatus');
+    el.textContent = msg;
+    el.classList.toggle('is-error', !!isError);
+  }
+  function collectBackup(){
+    const data = {};
+    for (let i = 0; i < localStorage.length; i++){
+      const k = localStorage.key(i);
+      if (k && k.startsWith('hyrox')) data[k] = localStorage.getItem(k);
+    }
+    return { app: BACKUP_APP, version: 1, exportedAt: new Date().toISOString(), data };
+  }
+  function downloadBackup(){
+    try {
+      const blob = new Blob([JSON.stringify(collectBackup(), null, 1)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `hyrox-daily-backup-${todayISO()}.json`;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+      dataStatus('Backup saved - look in your downloads for hyrox-daily-backup-' + todayISO() + '.json.');
+    } catch(e){
+      dataStatus('Could not create the backup file on this browser.', true);
+    }
+  }
+  function parseBackup(text){
+    let obj;
+    try { obj = JSON.parse(text); } catch(e){ return { error: "That file isn't a HYROX Daily backup (it isn't valid JSON)." }; }
+    if (!obj || obj.app !== BACKUP_APP || !obj.data || typeof obj.data !== 'object') return { error: "That file isn't a HYROX Daily backup." };
+    const keys = Object.keys(obj.data);
+    if (!keys.length || keys.some(k => !k.startsWith('hyrox') || typeof obj.data[k] !== 'string')) return { error: 'That backup file looks damaged - nothing was changed.' };
+    let profiles = [];
+    try { profiles = JSON.parse(obj.data[PROFILES_KEY] || '[]'); } catch(e){ return { error: 'That backup file looks damaged - nothing was changed.' }; }
+    if (!Array.isArray(profiles)) return { error: 'That backup file looks damaged - nothing was changed.' };
+    return { obj, profiles };
+  }
+  function restoreFromText(text){
+    const parsed = parseBackup(text);
+    if (parsed.error){ dataStatus(parsed.error, true); return false; }
+    const names = parsed.profiles.map(p => p.name).join(', ') || 'no profiles';
+    const when = parsed.obj.exportedAt ? new Date(parsed.obj.exportedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'an unknown date';
+    if (!window.confirm(`Replace everything on this device with the backup from ${when}? Profiles in it: ${names}.`)) {
+      dataStatus('Restore cancelled - nothing was changed.');
+      return false;
+    }
+    const existing = [];
+    for (let i = 0; i < localStorage.length; i++){ const k = localStorage.key(i); if (k && k.startsWith('hyrox')) existing.push(k); }
+    try {
+      existing.forEach(k => localStorage.removeItem(k));
+      Object.entries(parsed.obj.data).forEach(([k, v]) => localStorage.setItem(k, v));
+    } catch(e){
+      dataStatus('This browser would not save the restored data (storage full or blocked).', true);
+      return false;
+    }
+    dataStatus(`Restored ${parsed.profiles.length} profile${parsed.profiles.length === 1 ? '' : 's'}: ${names}.`);
+    boot();
+    return true;
+  }
+  document.getElementById('backupBtn').addEventListener('click', downloadBackup);
+  document.getElementById('restoreBtn').addEventListener('click', () => document.getElementById('restoreInput').click());
+  document.getElementById('restoreInput').addEventListener('change', (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => { restoreFromText(String(reader.result)); e.target.value = ''; };
+    reader.onerror = () => dataStatus('Could not read that file.', true);
+    reader.readAsText(file);
+  });
+
+  /* ---------------- install to home screen + offline ---------------- */
+  const INSTALL_DISMISSED_KEY = 'hyroxInstallDismissed_v1';
+  let installPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    installPrompt = e;
+    let dismissed = false;
+    try { dismissed = localStorage.getItem(INSTALL_DISMISSED_KEY) === '1'; } catch(err){}
+    if (!dismissed) document.getElementById('installBanner').hidden = false;
+  });
+  window.addEventListener('appinstalled', () => { document.getElementById('installBanner').hidden = true; });
+  document.getElementById('installBtn').addEventListener('click', async () => {
+    if (!installPrompt) return;
+    installPrompt.prompt();
+    try { await installPrompt.userChoice; } catch(err){}
+    installPrompt = null;
+    document.getElementById('installBanner').hidden = true;
+  });
+  document.getElementById('installDismiss').addEventListener('click', () => {
+    try { localStorage.setItem(INSTALL_DISMISSED_KEY, '1'); } catch(err){}
+    document.getElementById('installBanner').hidden = true;
+  });
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
+    window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+  }
   document.getElementById('newProfileName').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') addProfileFromInput();
   });

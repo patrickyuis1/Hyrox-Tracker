@@ -1,0 +1,83 @@
+// Warm-up, cool-down and off-day mobility routines.
+// "pattern" names a pictogram in PICTOGRAMS (pictograms.js / pictograms-mobility.js).
+const ROUTINES = {
+  gymWarmup: {
+    name: "Gym Warm-Up",
+    tab: "Gym warm-up",
+    duration: "10 min",
+    when: "Before every gym session.",
+    steps: [
+      { name: "Easy row or bike", pattern: "rowerg", dose: "4 min", cue: "Two minutes at nose-breathing pace, then build to moderate. Warm, not tired." },
+      { name: "Leg swings", pattern: "legswing", dose: "10 front-back + 10 side-to-side /leg", cue: "Hold something for balance and let the leg swing loose." },
+      { name: "World's greatest stretch", pattern: "wgs", dose: "5 /side", cue: "Back knee off the floor, elbow down to the instep, then rotate the top arm to the ceiling." },
+      { name: "Ankle rocks", pattern: "anklerock", dose: "10 /side", cue: "Drive the front knee forward over the toes with the heel down. Sled push and wall balls need this range." },
+      { name: "Glute bridge", pattern: "bridge", dose: "12 reps, 2 s squeeze", cue: "Push through the heels, ribs down, squeeze at the top." },
+      { name: "Inchworm", pattern: "inchworm", dose: "5 reps", cue: "Fold, walk the hands out to a plank, walk back. Legs as straight as you can manage." },
+      { name: "Band pull-aparts", pattern: "pullapart", dose: "15 reps", cue: "Straight arms, squeeze the shoulder blades. Do these before pressing or wall balls." },
+      { name: "Bodyweight squats", pattern: "squat", dose: "10 reps, 2 s pause at the bottom", cue: "Chest up, knees out, heels down." },
+      { name: "Build-up efforts", pattern: "run", dose: "2-3 x 20 s", cue: "Simulation days only: 20 s at race effort on the erg or a short run, then 1 min easy." },
+    ],
+  },
+  runWarmup: {
+    name: "Run Warm-Up",
+    tab: "Run warm-up",
+    duration: "6 min",
+    when: "Before every outdoor run.",
+    steps: [
+      { name: "Brisk walk into easy jog", pattern: "walk", dose: "3 min", cue: "Start walking, finish jogging. No watch-checking." },
+      { name: "Leg swings", pattern: "legswing", dose: "10 front-back /leg", cue: "Loose and relaxed." },
+      { name: "A-skips", pattern: "askip", dose: "2 x 20 m", cue: "Knee to hip height, quick light contacts, opposite arm drives." },
+      { name: "Pogo hops", pattern: "pogo", dose: "2 x 20", cue: "Stiff ankles, bounce off the balls of the feet. Wakes the calves up for the run." },
+    ],
+  },
+  raceWarmup: {
+    name: "Race-Day Warm-Up",
+    tab: "Race day",
+    duration: "15 min",
+    when: "Finish 10-15 min before your start wave. Times are on the Fuel tab once you set your start time.",
+    steps: [
+      { name: "Easy jog or erg", pattern: "run", dose: "5 min", cue: "Truly easy - you'll have plenty of time to work later." },
+      { name: "Leg swings", pattern: "legswing", dose: "10 + 10 /leg", cue: "" },
+      { name: "World's greatest stretch", pattern: "wgs", dose: "3 /side", cue: "" },
+      { name: "Ankle rocks", pattern: "anklerock", dose: "8 /side", cue: "" },
+      { name: "A-skips", pattern: "askip", dose: "2 x 15 m", cue: "" },
+      { name: "Band pull-aparts", pattern: "pullapart", dose: "15 reps", cue: "" },
+      { name: "Build-ups", pattern: "run", dose: "3 x 15 s", cue: "Build to Run 1 pace (4:50/km), walk back. Then stay warm - jacket on until the start." },
+    ],
+  },
+  cooldown: {
+    name: "Cool-Down",
+    tab: "Cool-down",
+    duration: "10 min",
+    when: "After every session. Hold each stretch, breathe slowly, no bouncing.",
+    steps: [
+      { name: "Easy walk or spin", pattern: "walk", dose: "3 min", cue: "Let your heart rate drop below ~110 before you stretch." },
+      { name: "Couch stretch", pattern: "couch", dose: "45 s /side", cue: "Back shin up the wall or bench, squeeze the glute, stay tall. Sleds and lunges hammer the hip flexors." },
+      { name: "Hamstring stretch", pattern: "hamstring", dose: "45 s /side", cue: "Band or towel round the foot, other leg flat on the floor." },
+      { name: "Calf stretch", pattern: "calfstretch", dose: "45 s /side", cue: "Hands on the wall, back leg straight, heel down." },
+      { name: "Pigeon", pattern: "pigeon", dose: "45 s /side", cue: "Front shin across, back leg long, ease your chest forward." },
+      { name: "Doorway chest stretch", pattern: "chest", dose: "30 s /side", cue: "Upper-body days. Forearm on the frame, step through until you feel the front of the shoulder." },
+      { name: "Child's pose", pattern: "childpose", dose: "60 s", cue: "Hips to heels, arms long, breathe into your back." },
+      { name: "Belly breathing", pattern: "breathe", dose: "1 min", cue: "On your back: 4 s in through the nose, 4 s out. Starts the recovery switch." },
+    ],
+  },
+  offday: {
+    name: "Off-Day Mobility",
+    tab: "Off-day",
+    duration: "20 min",
+    when: "Rest days. Add a 20-30 min easy walk if you feel like moving more.",
+    steps: [
+      { name: "Foam roll", pattern: "foamroll", dose: "5 min", cue: "Quads, calves, glutes, upper back - 30-45 s each, slow passes. Pause on tight spots, don't grind." },
+      { name: "Cat-cow", pattern: "catcow", dose: "10 slow reps", cue: "Move one vertebra at a time." },
+      { name: "Thoracic open book", pattern: "openbook", dose: "8 /side", cue: "Lying on your side, knees stacked and pinned. Follow the top hand with your eyes." },
+      { name: "World's greatest stretch", pattern: "wgs", dose: "5 /side", cue: "" },
+      { name: "Deep squat hold", pattern: "deepsquat", dose: "3 x 30 s", cue: "Elbows push the knees out, heels down, chest up. Rock gently side to side." },
+      { name: "Couch stretch", pattern: "couch", dose: "60 s /side", cue: "" },
+      { name: "Pigeon", pattern: "pigeon", dose: "60 s /side", cue: "" },
+      { name: "Hamstring stretch", pattern: "hamstring", dose: "60 s /side", cue: "" },
+      { name: "Calf stretch", pattern: "calfstretch", dose: "60 s /side", cue: "Then 30 s with the back knee bent to reach the lower calf." },
+      { name: "Dead bug", pattern: "deadbug", dose: "2 x 8 /side", cue: "Lower back stays pressed into the floor the whole time." },
+    ],
+  },
+};
+const ROUTINE_ORDER = ["gymWarmup", "runWarmup", "raceWarmup", "cooldown", "offday"];

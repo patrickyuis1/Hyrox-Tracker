@@ -320,7 +320,7 @@ const PICTOGRAMS = {
 
   /* ---------- REST ---------- */
   rest: svgWrap('rest', `
-    <path class="p-moon" d="M62 14 A26 26 0 1 0 62 98 A32 32 0 0 1 62 14 Z" />
+    <path class="p-moon" d="M62 14 A42 42 0 1 0 62 98 A54 54 0 0 1 62 14 Z" />
     `,
     `${BASE_CSS}
      .pictogram--rest .p-moon{ fill:currentColor; stroke:none; opacity:0.9; }

@@ -4,6 +4,45 @@ const PROGRAM = {
   "startDate": "2026-08-03",
   "race1": "2026-11-01",
   "race2": "2026-12-04",
+  "races": [
+    {
+      "id": "race1",
+      "label": "Race 1",
+      "city": "Birmingham",
+      "date": "2026-11-01",
+      "result": "1:13:43"
+    },
+    {
+      "id": "race2",
+      "label": "Race 2",
+      "city": "London",
+      "date": "2026-12-04",
+      "startWindow": [
+        "14:30",
+        "15:10"
+      ]
+    },
+    {
+      "id": "race3",
+      "label": "Race 3",
+      "city": "Manchester",
+      "date": "2027-01-24",
+      "startWindow": [
+        "08:00",
+        "12:10"
+      ]
+    },
+    {
+      "id": "race4",
+      "label": "Race 4",
+      "city": "Glasgow",
+      "date": "2027-03-14",
+      "startWindow": [
+        "08:00",
+        "12:00"
+      ]
+    }
+  ],
   "phases": [
     {
       "id": "p1",
@@ -78,9 +117,78 @@ const PROGRAM = {
     },
     {
       "id": "race2",
-      "name": "Taper & Race 2",
+      "name": "Taper & Race 2 - London",
       "weeks": [
         18
+      ]
+    },
+    {
+      "id": "m1",
+      "name": "Manchester Block - Recovery",
+      "weeks": [
+        19
+      ]
+    },
+    {
+      "id": "m2",
+      "name": "Manchester Block - Build",
+      "weeks": [
+        20,
+        21,
+        22
+      ]
+    },
+    {
+      "id": "m3",
+      "name": "Manchester Block - Peak & Sharpen",
+      "weeks": [
+        23,
+        24
+      ]
+    },
+    {
+      "id": "race3",
+      "name": "Taper & Race 3 - Manchester",
+      "weeks": [
+        25
+      ]
+    },
+    {
+      "id": "g1",
+      "name": "Glasgow Block - Recovery",
+      "weeks": [
+        26
+      ]
+    },
+    {
+      "id": "g2",
+      "name": "Glasgow Block - Build",
+      "weeks": [
+        27,
+        28,
+        29
+      ]
+    },
+    {
+      "id": "g3",
+      "name": "Glasgow Block - Peak & Sharpen",
+      "weeks": [
+        30,
+        31
+      ]
+    },
+    {
+      "id": "race4",
+      "name": "Taper & Race 4 - Glasgow",
+      "weeks": [
+        32
+      ]
+    },
+    {
+      "id": "off",
+      "name": "Season Recovery",
+      "weeks": [
+        33
       ]
     }
   ],
@@ -405,7 +513,7 @@ const PROGRAM = {
               "name": "Wall Balls",
               "pattern": "wallball",
               "prescription": "100 reps for time",
-              "detail": "6kg ball, 3.65m target (standard HYROX men's spec). Log total time + rest breaks.",
+              "detail": "6kg ball, 3m target (standard HYROX men's spec). Log total time + rest breaks.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9130,7 +9238,7 @@ const PROGRAM = {
           "dayName": "Friday",
           "sessionType": "gym",
           "title": "Light Station Circuit",
-          "subtitle": "Re-introduction - stations 1-4 only, easy",
+          "subtitle": "Re-introduction - stations 1-4, sleds at race load for technique",
           "blocks": [
             {
               "name": "Warm-Up",
@@ -9167,9 +9275,10 @@ const PROGRAM = {
             {
               "name": "Sled Push",
               "pattern": "sledpush",
-              "prescription": "30m easy",
-              "detail": "",
-              "cue": "",
+              "prescription": "3 x 12.5m at race load (152 kg)",
+              "detail": "Technique only, full rest between lanes. Arms locked, hips low, short fast steps - keep the sled moving.",
+              "cue": "Birmingham: sled push placed 1019th vs 639th overall. This is where Race 2 is won.",
+              "videoQuery": "hyrox sled push technique",
               "log": {
                 "fields": [
                   {
@@ -9192,9 +9301,10 @@ const PROGRAM = {
             {
               "name": "Sled Pull",
               "pattern": "sledpull",
-              "prescription": "30m easy",
-              "detail": "",
-              "cue": "",
+              "prescription": "3 x 12.5m at race load (103 kg)",
+              "detail": "Feet planted, sit back into a quarter squat, long hand-over-hand pulls.",
+              "cue": "Stay inside the box at the end of the lane - that's the 30 s Birmingham penalty.",
+              "videoQuery": "hyrox sled pull technique",
               "log": {
                 "fields": [
                   {
@@ -9218,7 +9328,7 @@ const PROGRAM = {
               "name": "Wall Balls",
               "pattern": "wallball",
               "prescription": "50 reps, moderate",
-              "detail": "",
+              "detail": "6 kg ball to the 3 m target.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9316,8 +9426,8 @@ const PROGRAM = {
           "date": "2026-11-16",
           "dayName": "Monday",
           "sessionType": "gym",
-          "title": "Heavy Lower Body + Sled (full intensity)",
-          "subtitle": "Sharpening I - back to full effort",
+          "title": "Lower Body + Race-Load Sleds",
+          "subtitle": "Sharpening I - sleds are priority #1 for Race 2",
           "blocks": [
             {
               "name": "Warm-Up",
@@ -9327,12 +9437,12 @@ const PROGRAM = {
               "cue": ""
             },
             {
-              "name": "Back Squat",
+              "name": "Front Squat",
               "pattern": "squat",
-              "prescription": "4 x 6",
-              "detail": "RPE 7-8 - continue your established working weight progression.",
-              "cue": "Technique first. This lift is unchanged from your existing program.",
-              "videoQuery": "back squat technique",
+              "prescription": "4 x 5",
+              "detail": "RPE 7. In for Back Squat this block.",
+              "cue": "Upright torso and quads carry straight over to wall balls and lunges.",
+              "videoQuery": "front squat technique",
               "log": {
                 "fields": [
                   {
@@ -9350,7 +9460,7 @@ const PROGRAM = {
               "pattern": "hinge",
               "prescription": "3 x 8",
               "detail": "RPE 7 - continue existing progression.",
-              "cue": "Hinge from the hips, soft knees, bar close to the legs.",
+              "cue": "",
               "videoQuery": "romanian deadlift technique",
               "log": {
                 "fields": [
@@ -9367,8 +9477,8 @@ const PROGRAM = {
             {
               "name": "Bulgarian Split Squat",
               "pattern": "lunge",
-              "prescription": "3 x 10 /leg",
-              "detail": "RPE 7 - continue existing progression.",
+              "prescription": "3 x 8 /leg",
+              "detail": "RPE 7.",
               "cue": "",
               "videoQuery": "bulgarian split squat technique",
               "log": {
@@ -9384,20 +9494,78 @@ const PROGRAM = {
               }
             },
             {
-              "name": "Leg Extension",
-              "pattern": "squat",
-              "prescription": "3 x 12",
-              "detail": "RPE 7 - accessory, controlled tempo.",
-              "cue": "",
-              "videoQuery": "leg extension technique",
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "One lane each, alternating with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
               "log": {
                 "fields": [
                   {
                     "key": "weight",
-                    "label": "Weight",
+                    "label": "Load",
                     "placeholder": "kg",
                     "inputmode": "decimal",
                     "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Same format as the push. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - overload",
+              "pattern": "sledpush",
+              "prescription": "3 x 12.5m at 170-180 kg",
+              "detail": "Full rest (2 min). Builds the strength reserve so 152 kg feels lighter on race day.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
                   }
                 ]
               }
@@ -9405,8 +9573,8 @@ const PROGRAM = {
             {
               "name": "Standing Calf Raise",
               "pattern": "calf",
-              "prescription": "3 x 15",
-              "detail": "RPE 7 - full stretch and full contraction.",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top. Calves are the first thing to go on a heavy push.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9416,58 +9584,6 @@ const PROGRAM = {
                     "placeholder": "kg",
                     "inputmode": "decimal",
                     "unit": "kg"
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Sled Push - speed",
-              "pattern": "sledpush",
-              "prescription": "8 x 20m",
-              "detail": "Back to speed-tempo, full intensity.",
-              "cue": "Light-moderate load, MOVE FAST - this is not a strength set.",
-              "videoQuery": "sled push technique",
-              "log": {
-                "fields": [
-                  {
-                    "key": "weight",
-                    "label": "Load",
-                    "placeholder": "kg",
-                    "inputmode": "decimal",
-                    "unit": "kg"
-                  },
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Sled Pull - speed",
-              "pattern": "sledpull",
-              "prescription": "8 x 20m",
-              "detail": "Back to speed-tempo, full intensity.",
-              "cue": "Same intent as the push: fast, repeatable, not maximal.",
-              "videoQuery": "sled pull technique",
-              "log": {
-                "fields": [
-                  {
-                    "key": "weight",
-                    "label": "Load",
-                    "placeholder": "kg",
-                    "inputmode": "decimal",
-                    "unit": "kg"
-                  },
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
                   }
                 ]
               }
@@ -9486,14 +9602,14 @@ const PROGRAM = {
           "dayName": "Tuesday",
           "sessionType": "run",
           "title": "Tempo Run",
-          "subtitle": "",
+          "subtitle": "Faster than the old tempo - you raced at 4:44/km",
           "blocks": [
             {
               "name": "Tempo Run",
               "pattern": "run",
               "prescription": "20 min",
-              "detail": "~4:45-5:15/km, HR 155-175.",
-              "cue": "",
+              "detail": "~4:30-4:50/km, HR 155-170. 10 min easy before and after.",
+              "cue": "Controlled hard, not a race.",
               "log": {
                 "fields": [
                   {
@@ -9519,8 +9635,8 @@ const PROGRAM = {
           "date": "2026-11-18",
           "dayName": "Wednesday",
           "sessionType": "gym",
-          "title": "Upper Body + Roxzone",
-          "subtitle": "Sharpening I",
+          "title": "Upper Body + Wall Balls + Row",
+          "subtitle": "Sharpening I - second-priority stations",
           "blocks": [
             {
               "name": "Warm-Up",
@@ -9530,12 +9646,12 @@ const PROGRAM = {
               "cue": ""
             },
             {
-              "name": "Incline DB Press",
+              "name": "Barbell Bench Press",
               "pattern": "press",
-              "prescription": "4 x 6-8",
-              "detail": "RPE 7-8 - continue your established working weight progression.",
-              "cue": "Unchanged from your existing program.",
-              "videoQuery": "incline db press technique",
+              "prescription": "4 x 6",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "barbell bench press technique",
               "log": {
                 "fields": [
                   {
@@ -9551,8 +9667,8 @@ const PROGRAM = {
             {
               "name": "Weighted Pull-up",
               "pattern": "pullup",
-              "prescription": "4 x 8",
-              "detail": "RPE 7 - add weight only if all reps are clean.",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
               "cue": "",
               "videoQuery": "weighted pull up technique",
               "log": {
@@ -9587,28 +9703,10 @@ const PROGRAM = {
               }
             },
             {
-              "name": "Lateral Raise",
-              "pattern": "raise",
-              "prescription": "3 x 15",
-              "detail": "RPE 7 - control the eccentric.",
-              "cue": "",
-              "log": {
-                "fields": [
-                  {
-                    "key": "weight",
-                    "label": "Weight",
-                    "placeholder": "kg",
-                    "inputmode": "decimal",
-                    "unit": "kg"
-                  }
-                ]
-              }
-            },
-            {
               "name": "Face Pull",
               "pattern": "raise",
               "prescription": "3 x 15",
-              "detail": "RPE 7 - external rotation at the end range.",
+              "detail": "RPE 7 - shoulder health for the wall ball volume.",
               "cue": "",
               "videoQuery": "face pull technique",
               "log": {
@@ -9624,11 +9722,41 @@ const PROGRAM = {
               }
             },
             {
-              "name": "Roxzone Transition Drill",
-              "pattern": "carry",
-              "prescription": "8 reps",
-              "detail": "Back to full-speed transitions, sub-10 sec target.",
-              "cue": ""
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "10 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target, rest the remainder of each minute. If 15 takes longer than 40 s by minute 8, drop to 12.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "4 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m. Row placed 1.15x your overall standing at Birmingham.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
             },
             {
               "name": "Cool-Down + Mobility",
@@ -9643,37 +9771,23 @@ const PROGRAM = {
           "date": "2026-11-19",
           "dayName": "Thursday",
           "sessionType": "run",
-          "title": "Compromised Running",
-          "subtitle": "",
+          "title": "Compromised Running - Lunges + Wall Balls",
+          "subtitle": "Running off the two stations that didn't move",
           "blocks": [
             {
-              "name": "Burpee Broad Jump + 400m",
-              "pattern": "burpee",
-              "prescription": "5-6 rounds",
-              "detail": "90 sec recovery.",
-              "cue": "",
+              "name": "Sandbag Lunges + Wall Balls + 400m",
+              "pattern": "lunge",
+              "prescription": "5 rounds",
+              "detail": "25 m sandbag lunges (20 kg) + 20 wall balls, straight into 400 m at race pace. 90 s rest between rounds.",
+              "cue": "Log total time for all 5 rounds.",
               "log": {
                 "fields": [
                   {
                     "key": "time",
-                    "label": "Total Time",
+                    "label": "Time",
                     "placeholder": "mm:ss",
                     "inputmode": "numeric",
                     "unit": ""
-                  },
-                  {
-                    "key": "restTime",
-                    "label": "Rest Interval",
-                    "placeholder": "sec",
-                    "inputmode": "numeric",
-                    "unit": "s"
-                  },
-                  {
-                    "key": "restEvery",
-                    "label": "Per (metres)",
-                    "placeholder": "e.g. 20",
-                    "inputmode": "numeric",
-                    "unit": "m"
                   }
                 ]
               }
@@ -9684,8 +9798,8 @@ const PROGRAM = {
           "date": "2026-11-20",
           "dayName": "Friday",
           "sessionType": "gym",
-          "title": "Simulation: Stations 1-5",
-          "subtitle": "Sharpening I",
+          "title": "FULL SIMULATION - Race 2 dress rehearsal",
+          "subtitle": "Sharpening I milestone - two weeks out",
           "blocks": [
             {
               "name": "Warm-Up",
@@ -9698,7 +9812,7 @@ const PROGRAM = {
               "name": "1km Run",
               "pattern": "run",
               "prescription": "1km",
-              "detail": "",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9716,7 +9830,7 @@ const PROGRAM = {
               "name": "SkiErg",
               "pattern": "skierg",
               "prescription": "1000m",
-              "detail": "",
+              "detail": "Birmingham 3:56 - your strongest station vs the field. Swap every 250 m; hold it, don't overspend.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9741,7 +9855,7 @@ const PROGRAM = {
               "name": "1km Run",
               "pattern": "run",
               "prescription": "1km",
-              "detail": "",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9759,7 +9873,7 @@ const PROGRAM = {
               "name": "Sled Push",
               "pattern": "sledpush",
               "prescription": "50m",
-              "detail": "",
+              "detail": "Birmingham 3:06 - weakest vs the field. Swap every lane (12.5 m), keep it moving, aim ~20-30 s quicker.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9784,7 +9898,7 @@ const PROGRAM = {
               "name": "1km Run",
               "pattern": "run",
               "prescription": "1km",
-              "detail": "",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9802,7 +9916,7 @@ const PROGRAM = {
               "name": "Sled Pull",
               "pattern": "sledpull",
               "prescription": "50m",
-              "detail": "",
+              "detail": "Birmingham 4:35 incl. a 30 s penalty. Stay inside the box, swap every lane, aim for sub-3:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9827,7 +9941,7 @@ const PROGRAM = {
               "name": "1km Run",
               "pattern": "run",
               "prescription": "1km",
-              "detail": "",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9845,7 +9959,7 @@ const PROGRAM = {
               "name": "Burpee Broad Jump",
               "pattern": "burpee",
               "prescription": "80m",
-              "detail": "",
+              "detail": "Birmingham 3:24 - the targeted work paid off. Swap every 20 m, keep the rhythm.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9877,7 +9991,7 @@ const PROGRAM = {
               "name": "1km Run",
               "pattern": "run",
               "prescription": "1km",
-              "detail": "",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9895,7 +10009,7 @@ const PROGRAM = {
               "name": "Row",
               "pattern": "rowerg",
               "prescription": "1000m",
-              "detail": "",
+              "detail": "Birmingham 4:36. Swap every 250 m, aim for ~4:20.",
               "cue": "",
               "log": {
                 "fields": [
@@ -9910,10 +10024,139 @@ const PROGRAM = {
               }
             },
             {
-              "name": "Log splits",
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Farmers Carry",
+              "pattern": "carry",
+              "prescription": "200m",
+              "detail": "Birmingham 1:34 - a strength. Unbroken if you can.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sandbag Lunges",
+              "pattern": "lunge",
+              "prescription": "100m",
+              "detail": "Birmingham 4:05 - second-priority station. Swap every 25 m, aim for ~3:40.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Balls",
+              "pattern": "wallball",
+              "prescription": "100 reps",
+              "detail": "Birmingham 4:46. 6 kg to the 3 m target. Swap every 10 reps, aim for ~4:15-4:30.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Log every split",
               "pattern": "rest",
               "prescription": "",
-              "detail": "Compare to Cardiff and your Phase I/III benchmarks.",
+              "detail": "Two weeks out - your last full-length test. Compare station by station with Birmingham and practise every partner switch.",
               "cue": ""
             },
             {
@@ -9986,8 +10229,8 @@ const PROGRAM = {
           "date": "2026-11-23",
           "dayName": "Monday",
           "sessionType": "gym",
-          "title": "Heavy Lower Body + Sled (race-pace)",
-          "subtitle": "Sharpening II / Mini-Peak",
+          "title": "Lower Body + Race-Load Sleds (sharp)",
+          "subtitle": "Sharpening II - same load, quicker lanes",
           "blocks": [
             {
               "name": "Warm-Up",
@@ -9997,12 +10240,12 @@ const PROGRAM = {
               "cue": ""
             },
             {
-              "name": "Pause Squat",
+              "name": "Front Squat",
               "pattern": "squat",
-              "prescription": "4 x 6",
-              "detail": "RPE 7-8 - continue your established working weight progression.",
-              "cue": "Technique first. This lift is unchanged from your existing program.",
-              "videoQuery": "pause squat technique",
+              "prescription": "3 x 4",
+              "detail": "RPE 7-8.",
+              "cue": "",
+              "videoQuery": "front squat technique",
               "log": {
                 "fields": [
                   {
@@ -10018,9 +10261,9 @@ const PROGRAM = {
             {
               "name": "Romanian Deadlift",
               "pattern": "hinge",
-              "prescription": "3 x 8",
-              "detail": "RPE 7 - continue existing progression.",
-              "cue": "Hinge from the hips, soft knees, bar close to the legs.",
+              "prescription": "3 x 6",
+              "detail": "RPE 7.",
+              "cue": "",
               "videoQuery": "romanian deadlift technique",
               "log": {
                 "fields": [
@@ -10035,39 +10278,71 @@ const PROGRAM = {
               }
             },
             {
-              "name": "Bulgarian Split Squat",
-              "pattern": "lunge",
-              "prescription": "3 x 10 /leg",
-              "detail": "RPE 7 - continue existing progression.",
-              "cue": "",
-              "videoQuery": "bulgarian split squat technique",
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "Beat last Monday's lane times at the same load.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
               "log": {
                 "fields": [
                   {
                     "key": "weight",
-                    "label": "Weight",
+                    "label": "Load",
                     "placeholder": "kg",
                     "inputmode": "decimal",
                     "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
                   }
                 ]
               }
             },
             {
-              "name": "Leg Extension",
-              "pattern": "squat",
-              "prescription": "3 x 12",
-              "detail": "RPE 7 - accessory, controlled tempo.",
-              "cue": "",
-              "videoQuery": "leg extension technique",
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Beat last Monday's lane times at the same load.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
               "log": {
                 "fields": [
                   {
                     "key": "weight",
-                    "label": "Weight",
+                    "label": "Load",
                     "placeholder": "kg",
                     "inputmode": "decimal",
                     "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sandbag Lunges - 50m repeats",
+              "pattern": "lunge",
+              "prescription": "2 x 50m (20 kg)",
+              "detail": "Unbroken, short steps, back knee kisses the floor. 2 min rest.",
+              "cue": "Log your faster 50 m.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
                   }
                 ]
               }
@@ -10075,8 +10350,8 @@ const PROGRAM = {
             {
               "name": "Standing Calf Raise",
               "pattern": "calf",
-              "prescription": "3 x 15",
-              "detail": "RPE 7 - full stretch and full contraction.",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10086,58 +10361,6 @@ const PROGRAM = {
                     "placeholder": "kg",
                     "inputmode": "decimal",
                     "unit": "kg"
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Sled Push - speed",
-              "pattern": "sledpush",
-              "prescription": "10 x 20m",
-              "detail": "Race-pace effort - highest intensity of the bridge.",
-              "cue": "Light-moderate load, MOVE FAST - this is not a strength set.",
-              "videoQuery": "sled push technique",
-              "log": {
-                "fields": [
-                  {
-                    "key": "weight",
-                    "label": "Load",
-                    "placeholder": "kg",
-                    "inputmode": "decimal",
-                    "unit": "kg"
-                  },
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Sled Pull - speed",
-              "pattern": "sledpull",
-              "prescription": "10 x 20m",
-              "detail": "Race-pace effort - highest intensity of the bridge.",
-              "cue": "Same intent as the push: fast, repeatable, not maximal.",
-              "videoQuery": "sled pull technique",
-              "log": {
-                "fields": [
-                  {
-                    "key": "weight",
-                    "label": "Load",
-                    "placeholder": "kg",
-                    "inputmode": "decimal",
-                    "unit": "kg"
-                  },
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
                   }
                 ]
               }
@@ -10196,7 +10419,7 @@ const PROGRAM = {
           "date": "2026-11-25",
           "dayName": "Wednesday",
           "sessionType": "gym",
-          "title": "Upper Body + Erg Intervals",
+          "title": "Upper Body + Wall Balls + Row (sharp)",
           "subtitle": "Sharpening II",
           "blocks": [
             {
@@ -10209,9 +10432,9 @@ const PROGRAM = {
             {
               "name": "Barbell Bench Press",
               "pattern": "press",
-              "prescription": "4 x 6-8",
-              "detail": "RPE 7-8 - continue your established working weight progression.",
-              "cue": "Unchanged from your existing program.",
+              "prescription": "3 x 5",
+              "detail": "RPE 7.",
+              "cue": "",
               "videoQuery": "barbell bench press technique",
               "log": {
                 "fields": [
@@ -10228,47 +10451,10 @@ const PROGRAM = {
             {
               "name": "Weighted Pull-up",
               "pattern": "pullup",
-              "prescription": "4 x 8",
-              "detail": "RPE 7 - add weight only if all reps are clean.",
-              "cue": "",
-              "videoQuery": "weighted pull up technique",
-              "log": {
-                "fields": [
-                  {
-                    "key": "weight",
-                    "label": "Weight",
-                    "placeholder": "kg",
-                    "inputmode": "decimal",
-                    "unit": "kg"
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Seated Cable Row",
-              "pattern": "cablerow",
-              "prescription": "3 x 10",
+              "prescription": "3 x 6",
               "detail": "RPE 7.",
               "cue": "",
-              "videoQuery": "seated cable row technique",
-              "log": {
-                "fields": [
-                  {
-                    "key": "weight",
-                    "label": "Weight",
-                    "placeholder": "kg",
-                    "inputmode": "decimal",
-                    "unit": "kg"
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Lateral Raise",
-              "pattern": "raise",
-              "prescription": "3 x 15",
-              "detail": "RPE 7 - control the eccentric.",
-              "cue": "",
+              "videoQuery": "weighted pull up technique",
               "log": {
                 "fields": [
                   {
@@ -10285,7 +10471,7 @@ const PROGRAM = {
               "name": "Face Pull",
               "pattern": "raise",
               "prescription": "3 x 15",
-              "detail": "RPE 7 - external rotation at the end range.",
+              "detail": "RPE 7.",
               "cue": "",
               "videoQuery": "face pull technique",
               "log": {
@@ -10301,20 +10487,32 @@ const PROGRAM = {
               }
             },
             {
-              "name": "SkiErg Intervals",
-              "pattern": "skierg",
-              "prescription": "5 x 400m hard",
-              "detail": "60 sec rest.",
-              "cue": "",
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "8 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Same rule: drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
               "log": {
                 "fields": [
                   {
-                    "key": "power",
-                    "label": "Power Setting",
-                    "placeholder": "e.g. 8",
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
                     "inputmode": "numeric",
                     "unit": ""
-                  },
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "3 x 500m, 60 s rest",
+              "detail": "Same target split as last week, or quicker.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
                   {
                     "key": "time",
                     "label": "Time",
@@ -10324,13 +10522,6 @@ const PROGRAM = {
                   }
                 ]
               }
-            },
-            {
-              "name": "Roxzone Transition Drill",
-              "pattern": "carry",
-              "prescription": "embedded in mini-sim",
-              "detail": "Roxzone lives inside Friday's mini-simulation this week.",
-              "cue": ""
             },
             {
               "name": "Cool-Down + Mobility",
@@ -10346,13 +10537,13 @@ const PROGRAM = {
           "dayName": "Thursday",
           "sessionType": "run",
           "title": "Race-Pace Compromised Kilometres",
-          "subtitle": "",
+          "subtitle": "Station straight into a race-pace km",
           "blocks": [
             {
               "name": "Station + 1km at goal race pace",
               "pattern": "wallball",
-              "prescription": "5 rounds",
-              "detail": "Rotate station each round.",
+              "prescription": "4 rounds",
+              "detail": "Round 1: 25 m sled push at 152 kg. Round 2: 25 wall balls. Round 3: 25 m sandbag lunges. Round 4: 20 m burpee broad jumps. Each straight into 1 km at 4:40. 2 min rest.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10386,8 +10577,8 @@ const PROGRAM = {
           "date": "2026-11-27",
           "dayName": "Friday",
           "sessionType": "gym",
-          "title": "MINI-SIMULATION - Full 8 Stations",
-          "subtitle": "Sharpening II / Mini-Peak milestone",
+          "title": "HALF SIMULATION - Stations 1-4 at race pace",
+          "subtitle": "Sharpening II milestone - one week out",
           "blocks": [
             {
               "name": "Warm-Up",
@@ -10400,7 +10591,7 @@ const PROGRAM = {
               "name": "1km Run",
               "pattern": "run",
               "prescription": "1km",
-              "detail": "Race pace.",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10418,7 +10609,7 @@ const PROGRAM = {
               "name": "SkiErg",
               "pattern": "skierg",
               "prescription": "1000m",
-              "detail": "Cardiff split: 4:13. Race-equivalent effort.",
+              "detail": "Birmingham 3:56 - your strongest station vs the field. Swap every 250 m; hold it, don't overspend.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10443,7 +10634,7 @@ const PROGRAM = {
               "name": "1km Run",
               "pattern": "run",
               "prescription": "1km",
-              "detail": "Race pace.",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10461,7 +10652,7 @@ const PROGRAM = {
               "name": "Sled Push",
               "pattern": "sledpush",
               "prescription": "50m",
-              "detail": "Cardiff recorded 2:53, but the sled caught that day - hold ~1:55, the realistic number, not the old one.",
+              "detail": "Birmingham 3:06 - weakest vs the field. Swap every lane (12.5 m), keep it moving, aim ~20-30 s quicker.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10486,7 +10677,7 @@ const PROGRAM = {
               "name": "1km Run",
               "pattern": "run",
               "prescription": "1km",
-              "detail": "Race pace.",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10504,7 +10695,7 @@ const PROGRAM = {
               "name": "Sled Pull",
               "pattern": "sledpull",
               "prescription": "50m",
-              "detail": "Cardiff recorded 4:10, also affected by the catch - hold ~3:30, the realistic number.",
+              "detail": "Birmingham 4:35 incl. a 30 s penalty. Stay inside the box, swap every lane, aim for sub-3:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10529,7 +10720,7 @@ const PROGRAM = {
               "name": "1km Run",
               "pattern": "run",
               "prescription": "1km",
-              "detail": "Race pace.",
+              "detail": "Birmingham laps averaged 4:44. Hold 4:35-4:45; Run 1 no quicker than 4:50.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10547,7 +10738,7 @@ const PROGRAM = {
               "name": "Burpee Broad Jump",
               "pattern": "burpee",
               "prescription": "80m",
-              "detail": "Cardiff split: 3:53. This is one that actually felt hard - a genuine target.",
+              "detail": "Birmingham 3:24 - the targeted work paid off. Swap every 20 m, keep the rhythm.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10576,175 +10767,10 @@ const PROGRAM = {
               }
             },
             {
-              "name": "1km Run",
-              "pattern": "run",
-              "prescription": "1km",
-              "detail": "Race pace.",
-              "cue": "",
-              "log": {
-                "fields": [
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Row",
-              "pattern": "rowerg",
-              "prescription": "1000m",
-              "detail": "Cardiff split: 4:55. Race-equivalent effort.",
-              "cue": "",
-              "log": {
-                "fields": [
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
-                  }
-                ]
-              }
-            },
-            {
-              "name": "1km Run",
-              "pattern": "run",
-              "prescription": "1km",
-              "detail": "Race pace.",
-              "cue": "",
-              "log": {
-                "fields": [
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Farmers Carry",
-              "pattern": "carry",
-              "prescription": "200m",
-              "detail": "Cardiff split: 2:24. Race-equivalent effort.",
-              "cue": "",
-              "log": {
-                "fields": [
-                  {
-                    "key": "weight",
-                    "label": "Load",
-                    "placeholder": "kg",
-                    "inputmode": "decimal",
-                    "unit": "kg"
-                  },
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
-                  }
-                ]
-              }
-            },
-            {
-              "name": "1km Run",
-              "pattern": "run",
-              "prescription": "1km",
-              "detail": "Race pace.",
-              "cue": "",
-              "log": {
-                "fields": [
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Sandbag Lunges",
-              "pattern": "lunge",
-              "prescription": "100m",
-              "detail": "Cardiff split: 4:10. This is one that actually felt hard - a genuine target.",
-              "cue": "",
-              "log": {
-                "fields": [
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
-                  }
-                ]
-              }
-            },
-            {
-              "name": "1km Run",
-              "pattern": "run",
-              "prescription": "1km",
-              "detail": "Race pace.",
-              "cue": "",
-              "log": {
-                "fields": [
-                  {
-                    "key": "time",
-                    "label": "Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
-                  }
-                ]
-              }
-            },
-            {
-              "name": "Wall Balls",
-              "pattern": "wallball",
-              "prescription": "100 reps",
-              "detail": "Cardiff split: 4:50. This is one that actually felt hard - a genuine target.",
-              "cue": "",
-              "log": {
-                "fields": [
-                  {
-                    "key": "time",
-                    "label": "Total Time",
-                    "placeholder": "mm:ss",
-                    "inputmode": "numeric",
-                    "unit": ""
-                  },
-                  {
-                    "key": "restTime",
-                    "label": "Rest Interval",
-                    "placeholder": "sec",
-                    "inputmode": "numeric",
-                    "unit": "s"
-                  },
-                  {
-                    "key": "restEvery",
-                    "label": "Per (reps)",
-                    "placeholder": "e.g. 20",
-                    "inputmode": "numeric",
-                    "unit": " reps"
-                  }
-                ]
-              }
-            },
-            {
               "name": "Log every split",
               "pattern": "rest",
               "prescription": "",
-              "detail": "Mini-peak: last full-intensity test before Race 2 taper.",
+              "detail": "Seven days out: full race intensity, half the volume. Stop after the burpees - this is the last hard session before Race 2.",
               "cue": ""
             },
             {
@@ -10761,13 +10787,13 @@ const PROGRAM = {
           "dayName": "Saturday",
           "sessionType": "run",
           "title": "Long Aerobic Run",
-          "subtitle": "",
+          "subtitle": "Shorter - taper starts here",
           "blocks": [
             {
               "name": "Long Aerobic Run",
               "pattern": "run",
-              "prescription": "45-50 min",
-              "detail": "Easy-to-steady, HR 130-155. Time-on-feet over pace.",
+              "prescription": "40-45 min easy",
+              "detail": "Easy, HR under 150. Race-week fuel plan starts today - see the Fuel tab.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10801,7 +10827,7 @@ const PROGRAM = {
               "name": "Rest / Active Recovery",
               "pattern": "rest",
               "prescription": "Full rest day",
-              "detail": "Full rest, or 20-30min easy walk + mobility. Protect sleep tonight.",
+              "detail": "Full rest, or 20-30 min easy walk + the off-day mobility routine.",
               "cue": ""
             }
           ]
@@ -10810,15 +10836,15 @@ const PROGRAM = {
     },
     {
       "weekNum": 18,
-      "phase": "Taper & Race 2",
+      "phase": "Taper & Race 2 - London",
       "dateRange": "Nov 30 - Dec 6",
       "days": [
         {
           "date": "2026-11-30",
           "dayName": "Monday",
           "sessionType": "gym",
-          "title": "Opener: Lower Body",
-          "subtitle": "Taper into Race 2 - light activation only",
+          "title": "Opener: Lower Body + Sleds",
+          "subtitle": "Taper into Race 2 - crisp, not tiring",
           "blocks": [
             {
               "name": "Warm-Up",
@@ -10828,10 +10854,10 @@ const PROGRAM = {
               "cue": "Keep it light - this session is intentionally shorter this week."
             },
             {
-              "name": "Back Squat",
+              "name": "Front Squat",
               "pattern": "squat",
-              "prescription": "2 x 4",
-              "detail": "Light.",
+              "prescription": "2 x 3",
+              "detail": "Light - just wake the pattern up.",
               "cue": "",
               "log": {
                 "fields": [
@@ -10846,11 +10872,11 @@ const PROGRAM = {
               }
             },
             {
-              "name": "Sled Push + Pull",
+              "name": "Sled Push - race load",
               "pattern": "sledpush",
-              "prescription": "3 x 15m each",
-              "detail": "Fast, light, brief.",
-              "cue": "",
+              "prescription": "2 x 12.5m at 152 kg",
+              "detail": "Crisp lanes, full rest.",
+              "cue": "Arms locked, hips low, short fast steps.",
               "log": {
                 "fields": [
                   {
@@ -10866,6 +10892,63 @@ const PROGRAM = {
                     "placeholder": "mm:ss",
                     "inputmode": "numeric",
                     "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "2 x 12.5m at 103 kg",
+              "detail": "Crisp lanes, full rest.",
+              "cue": "Feet inside the box.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Balls",
+              "pattern": "wallball",
+              "prescription": "2 x 10",
+              "detail": "Smooth reps to the 3 m target.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
                   }
                 ]
               }
@@ -10971,6 +11054,31 @@ const PROGRAM = {
               }
             },
             {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "2 x 250m at race pace",
+              "detail": "Full rest. Just a reminder of race rhythm.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
               "name": "Cool-Down",
               "pattern": "core",
               "prescription": "5 min",
@@ -10984,13 +11092,13 @@ const PROGRAM = {
           "dayName": "Thursday",
           "sessionType": "rest",
           "title": "Rest",
-          "subtitle": "Full rest before Race 2",
+          "subtitle": "Full rest - fuel-up day",
           "blocks": [
             {
               "name": "Rest / Active Recovery",
               "pattern": "rest",
               "prescription": "Full rest day",
-              "detail": "Full rest. Hydrate, eat well, sleep well.",
+              "detail": "Full rest. Biggest carb meal at lunch - see the Fuel tab. Lay out kit, early night.",
               "cue": ""
             }
           ]
@@ -10999,15 +11107,15 @@ const PROGRAM = {
           "date": "2026-12-04",
           "dayName": "Friday",
           "sessionType": "race",
-          "title": "RACE DAY - HYROX Race 2",
-          "subtitle": "The re-peak, delivered",
+          "title": "RACE DAY - HYROX London",
+          "subtitle": "Race 2 of 4 - afternoon wave (14:30-15:10)",
           "blocks": [
             {
-              "name": "HYROX Race 2",
+              "name": "HYROX Race 2 - London",
               "pattern": "run",
-              "prescription": "Beat 1:22:32",
-              "detail": "Same plan as Race 1: confident Run 1, sled is solid so let it run itself, push hardest on Sandbag Lunges, Burpee Broad Jumps, and Wall Balls.",
-              "cue": "This is what the whole bridge phase was built for."
+              "prescription": "Beat 1:13:43",
+              "detail": "Runs: 4:35-4:45 laps like Birmingham, Run 1 no quicker than 4:50. Sleds: swap every lane and keep the sled moving; stay inside the box on the pull. Wall balls: swap every 10. Lunges: swap every 25 m.",
+              "cue": "Birmingham proved the engine. London is won on the sleds."
             }
           ]
         },
@@ -11022,7 +11130,7 @@ const PROGRAM = {
               "name": "Rest / Active Recovery",
               "pattern": "rest",
               "prescription": "Full rest day",
-              "detail": "Easy walk if you feel like moving. Otherwise, full rest.",
+              "detail": "Easy walk if you feel like moving. Otherwise, full rest. Log your London splits while you remember them.",
               "cue": ""
             }
           ]
@@ -11031,14 +11139,7787 @@ const PROGRAM = {
           "date": "2026-12-06",
           "dayName": "Sunday",
           "sessionType": "rest",
-          "title": "Recovery / Reflect",
+          "title": "Recovery",
+          "subtitle": "Manchester block starts tomorrow",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Easy walk + the off-day mobility routine. Seven weeks to Manchester.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 19,
+      "phase": "Manchester Block - Recovery",
+      "dateRange": "Dec 7 - Dec 13",
+      "days": [
+        {
+          "date": "2026-12-07",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Easy Flush",
+          "subtitle": "Recovery after London",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "Easy bike or row",
+              "pattern": "rowerg",
+              "prescription": "20 min",
+              "detail": "Conversational, HR under 130.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-08",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Easy Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "20-25 min",
+              "detail": "Very easy, HR under 145.",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-12-09",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Strength (moderate)",
+          "subtitle": "Rebuilding - nothing heavy yet",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "Back Squat",
+              "pattern": "squat",
+              "prescription": "3 x 6",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 8",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bench Press",
+              "pattern": "press",
+              "prescription": "3 x 6",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "3 x 6",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-10",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Aerobic Base",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "30 min",
+              "detail": "HR 130-150, ~5:30-6:30/km",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Strides",
+              "pattern": "run",
+              "prescription": "4 x 20 sec",
+              "detail": "Fast-start pace practice (~5:15-5:30/km), full recovery between.",
+              "cue": "Rehearsing a confident opening kilometre - not a Cardiff-style conservative start."
+            }
+          ]
+        },
+        {
+          "date": "2026-12-11",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "Light Station Technique",
+          "subtitle": "Sleds at race load, short and crisp",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "500m easy",
+              "detail": "",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "3 x 12.5m at 152 kg",
+              "detail": "Technique only, full rest.",
+              "cue": "Arms locked, hips low, short fast steps.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "3 x 12.5m at 103 kg",
+              "detail": "Technique only, full rest.",
+              "cue": "Feet inside the box.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Balls",
+              "pattern": "wallball",
+              "prescription": "3 x 15",
+              "detail": "Smooth reps to the 3 m target.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-12",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "40-45 min",
+              "detail": "Easy, HR under 150.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-12-13",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
           "subtitle": "",
           "blocks": [
             {
               "name": "Rest / Active Recovery",
               "pattern": "rest",
               "prescription": "Full rest day",
-              "detail": "Season debrief: what moved, what to build on next block.",
+              "detail": "Full rest, or 20-30min easy walk + mobility. Protect sleep tonight.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 20,
+      "phase": "Manchester Block - Build",
+      "dateRange": "Dec 14 - Dec 20",
+      "days": [
+        {
+          "date": "2026-12-14",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Lower Body + Race-Load Sleds",
+          "subtitle": "Manchester block - Build I",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Back Squat",
+              "pattern": "squat",
+              "prescription": "4 x 5",
+              "detail": "RPE 7-8 - heavier strength block.",
+              "cue": "",
+              "videoQuery": "back squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "romanian deadlift technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "pattern": "lunge",
+              "prescription": "3 x 8 /leg",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "bulgarian split squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "One lane each with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Same format. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - overload",
+              "pattern": "sledpush",
+              "prescription": "3 x 12.5m at 170-180 kg",
+              "detail": "Full rest (2 min). Strength reserve for race weight.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Standing Calf Raise",
+              "pattern": "calf",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-15",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Threshold Intervals",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Threshold Intervals",
+              "pattern": "run",
+              "prescription": "5 x 1km",
+              "detail": "~4:25-4:35/km, HR 165-175, 90 s easy jog between. 10 min easy before and after.",
+              "cue": "Log your average km.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-12-16",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Upper Body + Wall Balls + Row",
+          "subtitle": "Manchester block - Build I",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Barbell Bench Press",
+              "pattern": "press",
+              "prescription": "4 x 6",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "barbell bench press technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "weighted pull up technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Seated Cable Row",
+              "pattern": "cablerow",
+              "prescription": "3 x 10",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "seated cable row technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Face Pull",
+              "pattern": "raise",
+              "prescription": "3 x 15",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "face pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "10 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "4 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-17",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Compromised Running",
+          "subtitle": "Running off the stations that matter",
+          "blocks": [
+            {
+              "name": "Sandbag Lunges + Wall Balls + 400m",
+              "pattern": "lunge",
+              "prescription": "5 rounds",
+              "detail": "25 m sandbag lunges (20 kg) + 20 wall balls, straight into 400 m at race pace. 90 s rest.",
+              "cue": "Log total time for all rounds.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-12-18",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "Race-Pace Station Circuit",
+          "subtitle": "Manchester block - Build I",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Race-Pace Station Circuit",
+              "pattern": "sledpush",
+              "prescription": "3 rounds",
+              "detail": "Each round: 1 km run + 25 m sled push (152 kg) + 25 m sled pull (103 kg) + 25 m sandbag lunges + 25 wall balls. 2 min between rounds. Practise every partner switch.",
+              "cue": "Log total time.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "4 x 250m, 60 s rest",
+              "detail": "Race pace - keep your strongest station sharp.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Farmers Carry",
+              "pattern": "carry",
+              "prescription": "4 x 50m at 2 x 24 kg",
+              "detail": "Race weight, unbroken, 60 s rest. Last round heavier if it felt easy.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Dead Bug",
+              "pattern": "deadbug",
+              "prescription": "3 x 8 /side",
+              "detail": "Lower back pressed into the floor.",
+              "cue": ""
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-19",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "55-60 min",
+              "detail": "Easy-to-steady, HR 130-155. Time-on-feet over pace.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-12-20",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest, or 20-30min easy walk + mobility. Protect sleep tonight.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 21,
+      "phase": "Manchester Block - Build",
+      "dateRange": "Dec 21 - Dec 27",
+      "days": [
+        {
+          "date": "2026-12-21",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Lower Body + Race-Load Sleds",
+          "subtitle": "Christmas week - five sessions, lighter",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Back Squat",
+              "pattern": "squat",
+              "prescription": "4 x 5",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "back squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "romanian deadlift technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "One lane each with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Same format. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sandbag Lunges - 50m repeats",
+              "pattern": "lunge",
+              "prescription": "2 x 50m (20 kg)",
+              "detail": "Unbroken, short steps. 2 min rest.",
+              "cue": "Log your faster 50 m.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Standing Calf Raise",
+              "pattern": "calf",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-22",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Aerobic Base",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "35 min",
+              "detail": "HR 130-150, ~5:30-6:30/km",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Strides",
+              "pattern": "run",
+              "prescription": "5 x 20 sec",
+              "detail": "Fast-start pace practice (~5:15-5:30/km), full recovery between.",
+              "cue": "Rehearsing a confident opening kilometre - not a Cardiff-style conservative start."
+            }
+          ]
+        },
+        {
+          "date": "2026-12-23",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Upper Body + Wall Balls",
+          "subtitle": "Christmas week",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Barbell Bench Press",
+              "pattern": "press",
+              "prescription": "4 x 6",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "barbell bench press technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "weighted pull up technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Face Pull",
+              "pattern": "raise",
+              "prescription": "3 x 15",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "face pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "8 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "3 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-24",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Compromised Running",
+          "subtitle": "Christmas Eve - short and sharp",
+          "blocks": [
+            {
+              "name": "Burpee Broad Jump + 400m",
+              "pattern": "burpee",
+              "prescription": "4 rounds",
+              "detail": "20 m burpee broad jumps straight into 400 m at race pace. 90 s rest.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (metres)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": "m"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-12-25",
+          "dayName": "Friday",
+          "sessionType": "rest",
+          "title": "Christmas Day",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Enjoy it. No training.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-26",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Boxing Day Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "40-50 min easy",
+              "detail": "Easy - or a long walk if the day gets away from you.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-12-27",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest, or 20-30min easy walk + mobility. Protect sleep tonight.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 22,
+      "phase": "Manchester Block - Build",
+      "dateRange": "Dec 28 - Jan 3",
+      "days": [
+        {
+          "date": "2026-12-28",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Lower Body + Race-Load Sleds",
+          "subtitle": "Manchester block - Build II",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Front Squat",
+              "pattern": "squat",
+              "prescription": "4 x 5",
+              "detail": "RPE 7-8.",
+              "cue": "",
+              "videoQuery": "front squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "romanian deadlift technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "pattern": "lunge",
+              "prescription": "3 x 8 /leg",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "bulgarian split squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "One lane each with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Same format. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - overload",
+              "pattern": "sledpush",
+              "prescription": "3 x 12.5m at 170-180 kg",
+              "detail": "Full rest (2 min). Strength reserve for race weight.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Standing Calf Raise",
+              "pattern": "calf",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-29",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Tempo Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Tempo Run",
+              "pattern": "run",
+              "prescription": "25 min",
+              "detail": "~4:30-4:50/km, HR 155-170. 10 min easy before and after.",
+              "cue": "Controlled hard, not a race.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2026-12-30",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Upper Body + Wall Balls + Row",
+          "subtitle": "Manchester block - Build II",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Spoto Press",
+              "pattern": "press",
+              "prescription": "4 x 6",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "spoto press technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "weighted pull up technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Seated Cable Row",
+              "pattern": "cablerow",
+              "prescription": "3 x 10",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "seated cable row technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Face Pull",
+              "pattern": "raise",
+              "prescription": "3 x 15",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "face pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "10 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "5 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2026-12-31",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Race-Pace Compromised Kilometres",
+          "subtitle": "New Year's Eve - done by lunchtime",
+          "blocks": [
+            {
+              "name": "Station + 1km at goal race pace",
+              "pattern": "wallball",
+              "prescription": "4 rounds",
+              "detail": "Rotate: 25 m sled push at 152 kg / 25 wall balls / 25 m sandbag lunges / 20 m burpee broad jumps, each straight into 1 km at 4:40. 2 min rest.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-01-01",
+          "dayName": "Friday",
+          "sessionType": "rest",
+          "title": "New Year's Day",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Rest. Hydrate.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-02",
+          "dayName": "Saturday",
+          "sessionType": "gym",
+          "title": "Race-Pace Station Circuit",
+          "subtitle": "Moved to Saturday for New Year",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Race-Pace Station Circuit",
+              "pattern": "sledpush",
+              "prescription": "4 rounds",
+              "detail": "Each round: 1 km run + 25 m sled push (152 kg) + 25 m sled pull (103 kg) + 25 m sandbag lunges + 25 wall balls. 2 min between rounds. Practise every partner switch.",
+              "cue": "Log total time.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Farmers Carry",
+              "pattern": "carry",
+              "prescription": "4 x 50m at 2 x 24 kg",
+              "detail": "Race weight, unbroken, 60 s rest. Last round heavier if it felt easy.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Dead Bug",
+              "pattern": "deadbug",
+              "prescription": "3 x 8 /side",
+              "detail": "Lower back pressed into the floor.",
+              "cue": ""
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-03",
+          "dayName": "Sunday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "Moved to Sunday",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "60 min",
+              "detail": "Easy-to-steady, HR 130-155. Time-on-feet over pace.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 23,
+      "phase": "Manchester Block - Peak & Sharpen",
+      "dateRange": "Jan 4 - Jan 10",
+      "days": [
+        {
+          "date": "2027-01-04",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Lower Body + Race-Load Sleds",
+          "subtitle": "Manchester block - Peak",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Front Squat",
+              "pattern": "squat",
+              "prescription": "4 x 5",
+              "detail": "RPE 7-8.",
+              "cue": "",
+              "videoQuery": "front squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "romanian deadlift technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "pattern": "lunge",
+              "prescription": "3 x 8 /leg",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "bulgarian split squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "One lane each with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Same format. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - overload",
+              "pattern": "sledpush",
+              "prescription": "3 x 12.5m at 170-180 kg",
+              "detail": "Full rest (2 min). Strength reserve for race weight.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Standing Calf Raise",
+              "pattern": "calf",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-05",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Threshold Intervals",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Threshold Intervals",
+              "pattern": "run",
+              "prescription": "6 x 1km",
+              "detail": "~4:25-4:35/km, HR 165-175, 90 s easy jog between. 10 min easy before and after.",
+              "cue": "Log your average km.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-01-06",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Upper Body + Wall Balls + Row",
+          "subtitle": "Manchester block - Peak",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Barbell Bench Press",
+              "pattern": "press",
+              "prescription": "4 x 6",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "barbell bench press technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "weighted pull up technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Seated Cable Row",
+              "pattern": "cablerow",
+              "prescription": "3 x 10",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "seated cable row technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Face Pull",
+              "pattern": "raise",
+              "prescription": "3 x 15",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "face pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "10 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "4 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-07",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Compromised Running - Lunges + Wall Balls",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Sandbag Lunges + Wall Balls + 400m",
+              "pattern": "lunge",
+              "prescription": "5 rounds",
+              "detail": "25 m sandbag lunges (20 kg) + 20 wall balls, straight into 400 m at race pace. 90 s rest.",
+              "cue": "Log total time for all rounds.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-01-08",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "FULL SIMULATION - Manchester dress rehearsal",
+          "subtitle": "Manchester block - Peak - 16 days out",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "12-15 min",
+              "detail": "Easy bike or row, then full dynamic mobility (leg swings, hip openers, ankle rocks, band work), finishing with 2-3 short build-up efforts.",
+              "cue": "This is a maximal-effort day - don't rush this."
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "1000m",
+              "detail": "Race best so far 3:56 (Birmingham). Swap every 250 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push",
+              "pattern": "sledpush",
+              "prescription": "50m",
+              "detail": "Race best so far 3:06 (Birmingham) - check your London split. Swap every lane, keep it moving.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull",
+              "pattern": "sledpull",
+              "prescription": "50m",
+              "detail": "Race best so far 4:35 (Birmingham, incl. penalty). Feet inside the box, swap every lane.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Burpee Broad Jump",
+              "pattern": "burpee",
+              "prescription": "80m",
+              "detail": "Race best so far 3:24 (Birmingham). Swap every 20 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (metres)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": "m"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row",
+              "pattern": "rowerg",
+              "prescription": "1000m",
+              "detail": "Race best so far 4:36 (Birmingham). Swap every 250 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Farmers Carry",
+              "pattern": "carry",
+              "prescription": "200m",
+              "detail": "Race best so far 1:34 (Birmingham). Unbroken.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sandbag Lunges",
+              "pattern": "lunge",
+              "prescription": "100m",
+              "detail": "Race best so far 4:05 (Birmingham). Swap every 25 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Balls",
+              "pattern": "wallball",
+              "prescription": "100 reps",
+              "detail": "Race best so far 4:46 (Birmingham). 6 kg to 3 m, swap every 10.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Log every split",
+              "pattern": "rest",
+              "prescription": "",
+              "detail": "Last full-length test before Manchester. Compare every split with your best race and practise every partner switch.",
+              "cue": ""
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "10-12 min",
+              "detail": "Easy walk or spin, then extended stretching - hips, hamstrings, shoulders, calves.",
+              "cue": "Prioritise recovery after a maximal effort."
+            }
+          ]
+        },
+        {
+          "date": "2027-01-09",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "50 min easy",
+              "detail": "Easy-to-steady, HR 130-155. Time-on-feet over pace.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-01-10",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest, or 20-30min easy walk + mobility. Protect sleep tonight.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 24,
+      "phase": "Manchester Block - Peak & Sharpen",
+      "dateRange": "Jan 11 - Jan 17",
+      "days": [
+        {
+          "date": "2027-01-11",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Lower Body + Race-Load Sleds (sharp)",
+          "subtitle": "Manchester block - Sharpen",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Front Squat",
+              "pattern": "squat",
+              "prescription": "3 x 4",
+              "detail": "RPE 7-8.",
+              "cue": "",
+              "videoQuery": "front squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 6",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "romanian deadlift technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "One lane each with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Same format. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sandbag Lunges - 50m repeats",
+              "pattern": "lunge",
+              "prescription": "2 x 50m (20 kg)",
+              "detail": "Unbroken, short steps. 2 min rest.",
+              "cue": "Log your faster 50 m.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Standing Calf Raise",
+              "pattern": "calf",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-12",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Aerobic Base",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "30 min",
+              "detail": "HR 130-150, ~5:30-6:30/km",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Strides",
+              "pattern": "run",
+              "prescription": "5 x 20 sec",
+              "detail": "Fast-start pace practice (~5:15-5:30/km), full recovery between.",
+              "cue": "Rehearsing a confident opening kilometre - not a Cardiff-style conservative start."
+            }
+          ]
+        },
+        {
+          "date": "2027-01-13",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Upper Body + Wall Balls + Row (sharp)",
+          "subtitle": "Manchester block - Sharpen",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Barbell Bench Press",
+              "pattern": "press",
+              "prescription": "3 x 5",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "barbell bench press technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "weighted pull up technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Face Pull",
+              "pattern": "raise",
+              "prescription": "3 x 15",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "face pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "8 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "3 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-14",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Race-Pace Compromised Kilometres",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Station + 1km at goal race pace",
+              "pattern": "wallball",
+              "prescription": "4 rounds",
+              "detail": "Rotate: 25 m sled push at 152 kg / 25 wall balls / 25 m sandbag lunges / 20 m burpee broad jumps, each straight into 1 km at 4:40. 2 min rest.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-01-15",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "HALF SIMULATION - Stations 1-4 at race pace",
+          "subtitle": "Manchester block - Sharpen - 9 days out",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "12-15 min",
+              "detail": "Easy bike or row, then full dynamic mobility (leg swings, hip openers, ankle rocks, band work), finishing with 2-3 short build-up efforts.",
+              "cue": "This is a maximal-effort day - don't rush this."
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "1000m",
+              "detail": "Race best so far 3:56 (Birmingham). Swap every 250 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push",
+              "pattern": "sledpush",
+              "prescription": "50m",
+              "detail": "Race best so far 3:06 (Birmingham) - check your London split. Swap every lane, keep it moving.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull",
+              "pattern": "sledpull",
+              "prescription": "50m",
+              "detail": "Race best so far 4:35 (Birmingham, incl. penalty). Feet inside the box, swap every lane.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Burpee Broad Jump",
+              "pattern": "burpee",
+              "prescription": "80m",
+              "detail": "Race best so far 3:24 (Birmingham). Swap every 20 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (metres)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": "m"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Log every split",
+              "pattern": "rest",
+              "prescription": "",
+              "detail": "Full race intensity, half the volume. Last hard session before Manchester.",
+              "cue": ""
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "10-12 min",
+              "detail": "Easy walk or spin, then extended stretching - hips, hamstrings, shoulders, calves.",
+              "cue": "Prioritise recovery after a maximal effort."
+            }
+          ]
+        },
+        {
+          "date": "2027-01-16",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "Shorter - taper starts Monday",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "40-45 min easy",
+              "detail": "Easy, HR under 150.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-01-17",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest, or an easy walk + the off-day mobility routine.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 25,
+      "phase": "Taper & Race 3 - Manchester",
+      "dateRange": "Jan 18 - Jan 24",
+      "days": [
+        {
+          "date": "2027-01-18",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Opener: Lower Body + Sleds",
+          "subtitle": "Taper into Manchester - crisp, not tiring",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "Front Squat",
+              "pattern": "squat",
+              "prescription": "2 x 3",
+              "detail": "Light - just wake the pattern up.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "2 x 12.5m at 152 kg",
+              "detail": "Crisp lanes, full rest.",
+              "cue": "Arms locked, hips low, short fast steps.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "2 x 12.5m at 103 kg",
+              "detail": "Crisp lanes, full rest.",
+              "cue": "Feet inside the box.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Balls",
+              "pattern": "wallball",
+              "prescription": "2 x 10",
+              "detail": "Smooth reps to the 3 m target.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-19",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Easy + Strides",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "25 min",
+              "detail": "HR 130-150, ~5:30-6:30/km",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Strides",
+              "pattern": "run",
+              "prescription": "4 x 20 sec",
+              "detail": "Fast-start pace practice (~5:15-5:30/km), full recovery between.",
+              "cue": "Rehearsing a confident opening kilometre - not a Cardiff-style conservative start."
+            }
+          ]
+        },
+        {
+          "date": "2027-01-20",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Opener: Upper Body",
+          "subtitle": "Taper - light activation only",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "Bench Press",
+              "pattern": "press",
+              "prescription": "2 x 4",
+              "detail": "Light.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "2 x 5",
+              "detail": "Bodyweight or light.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "2 x 250m at race pace",
+              "detail": "Full rest. A reminder of race rhythm.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-21",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Easy + Strides",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "20 min",
+              "detail": "HR 130-150, ~5:30-6:30/km",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Strides",
+              "pattern": "run",
+              "prescription": "3 x 20 sec",
+              "detail": "Fast-start pace practice (~5:15-5:30/km), full recovery between.",
+              "cue": "Rehearsing a confident opening kilometre - not a Cardiff-style conservative start."
+            }
+          ]
+        },
+        {
+          "date": "2027-01-22",
+          "dayName": "Friday",
+          "sessionType": "rest",
+          "title": "Rest",
+          "subtitle": "Fuel-up starts - see the Fuel tab",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest. Carbs step up today.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-23",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Pre-Race Shakeout",
+          "subtitle": "Fuel-up day",
+          "blocks": [
+            {
+              "name": "Easy Jog",
+              "pattern": "run",
+              "prescription": "10-15 min",
+              "detail": "Very easy + 2-3 strides. Biggest carb meal at lunch.",
+              "cue": "Early wave? Set your start time on the Fuel tab and an alarm for breakfast.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-01-24",
+          "dayName": "Sunday",
+          "sessionType": "race",
+          "title": "RACE DAY - HYROX Manchester",
+          "subtitle": "Race 3 of 4 - wave between 08:00 and 12:10",
+          "blocks": [
+            {
+              "name": "HYROX Race 3 - Manchester",
+              "pattern": "run",
+              "prescription": "Beat your best",
+              "detail": "Runs: 4:35-4:45 laps, Run 1 no quicker than 4:50. Sleds: swap every lane and keep the sled moving; feet inside the box on the pull. Wall balls: swap every 10. Lunges: swap every 25 m.",
+              "cue": "Same plan that worked in Birmingham - the sleds are where the next minute is."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 26,
+      "phase": "Glasgow Block - Recovery",
+      "dateRange": "Jan 25 - Jan 31",
+      "days": [
+        {
+          "date": "2027-01-25",
+          "dayName": "Monday",
+          "sessionType": "rest",
+          "title": "Recovery",
+          "subtitle": "The day after Manchester",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Easy walk, eat well, protein at every meal. Log your race splits.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-26",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Easy Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "20-25 min",
+              "detail": "Very easy, HR under 145.",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-01-27",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Strength (moderate)",
+          "subtitle": "Rebuilding - nothing heavy yet",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "Back Squat",
+              "pattern": "squat",
+              "prescription": "3 x 6",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 8",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bench Press",
+              "pattern": "press",
+              "prescription": "3 x 6",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "3 x 6",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-28",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Aerobic Base",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "30 min",
+              "detail": "HR 130-150, ~5:30-6:30/km",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Strides",
+              "pattern": "run",
+              "prescription": "4 x 20 sec",
+              "detail": "Fast-start pace practice (~5:15-5:30/km), full recovery between.",
+              "cue": "Rehearsing a confident opening kilometre - not a Cardiff-style conservative start."
+            }
+          ]
+        },
+        {
+          "date": "2027-01-29",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "Light Station Technique",
+          "subtitle": "Sleds at race load, short and crisp",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "500m easy",
+              "detail": "",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "3 x 12.5m at 152 kg",
+              "detail": "Technique only, full rest.",
+              "cue": "Arms locked, hips low, short fast steps.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "3 x 12.5m at 103 kg",
+              "detail": "Technique only, full rest.",
+              "cue": "Feet inside the box.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Balls",
+              "pattern": "wallball",
+              "prescription": "3 x 15",
+              "detail": "Smooth reps to the 3 m target.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-01-30",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "40-45 min",
+              "detail": "Easy, HR under 150.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-01-31",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest, or 20-30min easy walk + mobility. Protect sleep tonight.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 27,
+      "phase": "Glasgow Block - Build",
+      "dateRange": "Feb 1 - Feb 7",
+      "days": [
+        {
+          "date": "2027-02-01",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Lower Body + Race-Load Sleds",
+          "subtitle": "Glasgow block - Build I",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Back Squat",
+              "pattern": "squat",
+              "prescription": "4 x 5",
+              "detail": "RPE 7-8 - heavier strength block.",
+              "cue": "",
+              "videoQuery": "back squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "romanian deadlift technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "pattern": "lunge",
+              "prescription": "3 x 8 /leg",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "bulgarian split squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "One lane each with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Same format. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - overload",
+              "pattern": "sledpush",
+              "prescription": "3 x 12.5m at 170-180 kg",
+              "detail": "Full rest (2 min). Strength reserve for race weight.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Standing Calf Raise",
+              "pattern": "calf",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-02-02",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Threshold Intervals",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Threshold Intervals",
+              "pattern": "run",
+              "prescription": "5 x 1km",
+              "detail": "~4:25-4:35/km, HR 165-175, 90 s easy jog between. 10 min easy before and after.",
+              "cue": "Log your average km.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-03",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Upper Body + Wall Balls + Row",
+          "subtitle": "Glasgow block - Build I",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Barbell Bench Press",
+              "pattern": "press",
+              "prescription": "4 x 6",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "barbell bench press technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "weighted pull up technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Seated Cable Row",
+              "pattern": "cablerow",
+              "prescription": "3 x 10",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "seated cable row technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Face Pull",
+              "pattern": "raise",
+              "prescription": "3 x 15",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "face pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "10 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "4 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-02-04",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Compromised Running",
+          "subtitle": "Running off the stations that matter",
+          "blocks": [
+            {
+              "name": "Sandbag Lunges + Wall Balls + 400m",
+              "pattern": "lunge",
+              "prescription": "5 rounds",
+              "detail": "25 m sandbag lunges (20 kg) + 20 wall balls, straight into 400 m at race pace. 90 s rest.",
+              "cue": "Log total time for all rounds.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-05",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "Race-Pace Station Circuit",
+          "subtitle": "Glasgow block - Build I",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Race-Pace Station Circuit",
+              "pattern": "sledpush",
+              "prescription": "3 rounds",
+              "detail": "Each round: 1 km run + 25 m sled push (152 kg) + 25 m sled pull (103 kg) + 25 m sandbag lunges + 25 wall balls. 2 min between rounds. Practise every partner switch.",
+              "cue": "Log total time.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "4 x 250m, 60 s rest",
+              "detail": "Race pace - keep your strongest station sharp.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Farmers Carry",
+              "pattern": "carry",
+              "prescription": "4 x 50m at 2 x 24 kg",
+              "detail": "Race weight, unbroken, 60 s rest. Last round heavier if it felt easy.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Dead Bug",
+              "pattern": "deadbug",
+              "prescription": "3 x 8 /side",
+              "detail": "Lower back pressed into the floor.",
+              "cue": ""
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-02-06",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "55-60 min",
+              "detail": "Easy-to-steady, HR 130-155. Time-on-feet over pace.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-07",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest, or 20-30min easy walk + mobility. Protect sleep tonight.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 28,
+      "phase": "Glasgow Block - Build",
+      "dateRange": "Feb 8 - Feb 14",
+      "days": [
+        {
+          "date": "2027-02-08",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Lower Body + Race-Load Sleds",
+          "subtitle": "Glasgow block - Build II",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Back Squat",
+              "pattern": "squat",
+              "prescription": "5 x 4",
+              "detail": "RPE 7-8 - heavier strength block.",
+              "cue": "",
+              "videoQuery": "back squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "romanian deadlift technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "pattern": "lunge",
+              "prescription": "3 x 8 /leg",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "bulgarian split squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "One lane each with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Same format. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - overload",
+              "pattern": "sledpush",
+              "prescription": "3 x 12.5m at 170-180 kg",
+              "detail": "Full rest (2 min). Strength reserve for race weight.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Standing Calf Raise",
+              "pattern": "calf",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-02-09",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Tempo Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Tempo Run",
+              "pattern": "run",
+              "prescription": "25 min",
+              "detail": "~4:30-4:50/km, HR 155-170. 10 min easy before and after.",
+              "cue": "Controlled hard, not a race.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-10",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Upper Body + Wall Balls + Row",
+          "subtitle": "Glasgow block - Build II",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Spoto Press",
+              "pattern": "press",
+              "prescription": "4 x 6",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "spoto press technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "weighted pull up technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Seated Cable Row",
+              "pattern": "cablerow",
+              "prescription": "3 x 10",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "seated cable row technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Face Pull",
+              "pattern": "raise",
+              "prescription": "3 x 15",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "face pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "12 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "4 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-02-11",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Compromised Running",
+          "subtitle": "Running off the stations that matter",
+          "blocks": [
+            {
+              "name": "Burpee Broad Jump + 400m",
+              "pattern": "burpee",
+              "prescription": "5 rounds",
+              "detail": "20 m burpee broad jumps straight into 400 m at race pace. 90 s rest.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (metres)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": "m"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-12",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "Race-Pace Station Circuit",
+          "subtitle": "Glasgow block - Build II",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Race-Pace Station Circuit",
+              "pattern": "sledpush",
+              "prescription": "4 rounds",
+              "detail": "Each round: 1 km run + 25 m sled push (152 kg) + 25 m sled pull (103 kg) + 25 m sandbag lunges + 25 wall balls. 2 min between rounds. Practise every partner switch.",
+              "cue": "Log total time.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Farmers Carry",
+              "pattern": "carry",
+              "prescription": "4 x 50m at 2 x 24 kg",
+              "detail": "Race weight, unbroken, 60 s rest. Last round heavier if it felt easy.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Dead Bug",
+              "pattern": "deadbug",
+              "prescription": "3 x 8 /side",
+              "detail": "Lower back pressed into the floor.",
+              "cue": ""
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-02-13",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "60-65 min",
+              "detail": "Easy-to-steady, HR 130-155. Time-on-feet over pace.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-14",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest, or 20-30min easy walk + mobility. Protect sleep tonight.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 29,
+      "phase": "Glasgow Block - Build",
+      "dateRange": "Feb 15 - Feb 21",
+      "days": [
+        {
+          "date": "2027-02-15",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Lower Body + Race-Load Sleds",
+          "subtitle": "Glasgow block - Build III",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Back Squat",
+              "pattern": "squat",
+              "prescription": "5 x 3",
+              "detail": "RPE 7-8 - heavier strength block.",
+              "cue": "",
+              "videoQuery": "back squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "romanian deadlift technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "pattern": "lunge",
+              "prescription": "3 x 8 /leg",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "bulgarian split squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "8 x 12.5m at 152 kg",
+              "detail": "One lane each with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "8 x 12.5m at 103 kg",
+              "detail": "Same format. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - overload",
+              "pattern": "sledpush",
+              "prescription": "3 x 12.5m at 170-180 kg",
+              "detail": "Full rest (2 min). Strength reserve for race weight.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Standing Calf Raise",
+              "pattern": "calf",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-02-16",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Threshold Intervals",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Threshold Intervals",
+              "pattern": "run",
+              "prescription": "6 x 1km",
+              "detail": "~4:25-4:35/km, HR 165-175, 90 s easy jog between. 10 min easy before and after.",
+              "cue": "Log your average km.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-17",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Upper Body + Wall Balls + Row",
+          "subtitle": "Glasgow block - Build III",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Incline DB Press",
+              "pattern": "press",
+              "prescription": "4 x 6",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "incline db press technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "weighted pull up technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Seated Cable Row",
+              "pattern": "cablerow",
+              "prescription": "3 x 10",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "seated cable row technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Face Pull",
+              "pattern": "raise",
+              "prescription": "3 x 15",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "face pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "14 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "5 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-02-18",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Compromised Running",
+          "subtitle": "Running off the stations that matter",
+          "blocks": [
+            {
+              "name": "Station + 1km at goal race pace",
+              "pattern": "wallball",
+              "prescription": "5 rounds",
+              "detail": "Rotate: 25 m sled push at 152 kg / 25 wall balls / 25 m sandbag lunges / 20 m burpee broad jumps, each straight into 1 km at 4:40. 2 min rest.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-19",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "SIMULATION - Stations 1-6 at race pace",
+          "subtitle": "Glasgow block - Build III",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "12-15 min",
+              "detail": "Easy bike or row, then full dynamic mobility (leg swings, hip openers, ankle rocks, band work), finishing with 2-3 short build-up efforts.",
+              "cue": "This is a maximal-effort day - don't rush this."
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "1000m",
+              "detail": "Race best so far 3:56 (Birmingham). Swap every 250 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push",
+              "pattern": "sledpush",
+              "prescription": "50m",
+              "detail": "Race best so far 3:06 (Birmingham) - check your London split. Swap every lane, keep it moving.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull",
+              "pattern": "sledpull",
+              "prescription": "50m",
+              "detail": "Race best so far 4:35 (Birmingham, incl. penalty). Feet inside the box, swap every lane.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Burpee Broad Jump",
+              "pattern": "burpee",
+              "prescription": "80m",
+              "detail": "Race best so far 3:24 (Birmingham). Swap every 20 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (metres)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": "m"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row",
+              "pattern": "rowerg",
+              "prescription": "1000m",
+              "detail": "Race best so far 4:36 (Birmingham). Swap every 250 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Farmers Carry",
+              "pattern": "carry",
+              "prescription": "200m",
+              "detail": "Race best so far 1:34 (Birmingham). Unbroken.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Log every split",
+              "pattern": "rest",
+              "prescription": "",
+              "detail": "Race pace through station 6, then stop. Note every partner switch.",
+              "cue": ""
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "10-12 min",
+              "detail": "Easy walk or spin, then extended stretching - hips, hamstrings, shoulders, calves.",
+              "cue": "Prioritise recovery after a maximal effort."
+            }
+          ]
+        },
+        {
+          "date": "2027-02-20",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "65-70 min",
+              "detail": "Easy-to-steady, HR 130-155. Time-on-feet over pace.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-21",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest, or 20-30min easy walk + mobility. Protect sleep tonight.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 30,
+      "phase": "Glasgow Block - Peak & Sharpen",
+      "dateRange": "Feb 22 - Feb 28",
+      "days": [
+        {
+          "date": "2027-02-22",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Lower Body + Race-Load Sleds",
+          "subtitle": "Glasgow block - Peak",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Front Squat",
+              "pattern": "squat",
+              "prescription": "4 x 5",
+              "detail": "RPE 7-8.",
+              "cue": "",
+              "videoQuery": "front squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "romanian deadlift technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bulgarian Split Squat",
+              "pattern": "lunge",
+              "prescription": "3 x 8 /leg",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "bulgarian split squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "One lane each with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Same format. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - overload",
+              "pattern": "sledpush",
+              "prescription": "3 x 12.5m at 170-180 kg",
+              "detail": "Full rest (2 min). Strength reserve for race weight.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Standing Calf Raise",
+              "pattern": "calf",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-02-23",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Threshold Intervals",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Threshold Intervals",
+              "pattern": "run",
+              "prescription": "6 x 1km",
+              "detail": "~4:25-4:35/km, HR 165-175, 90 s easy jog between. 10 min easy before and after.",
+              "cue": "Log your average km.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-24",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Upper Body + Wall Balls + Row",
+          "subtitle": "Glasgow block - Peak",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Barbell Bench Press",
+              "pattern": "press",
+              "prescription": "4 x 6",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "barbell bench press technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "weighted pull up technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Seated Cable Row",
+              "pattern": "cablerow",
+              "prescription": "3 x 10",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "seated cable row technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Face Pull",
+              "pattern": "raise",
+              "prescription": "3 x 15",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "face pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "10 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "4 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-02-25",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Compromised Running - Lunges + Wall Balls",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Sandbag Lunges + Wall Balls + 400m",
+              "pattern": "lunge",
+              "prescription": "5 rounds",
+              "detail": "25 m sandbag lunges (20 kg) + 20 wall balls, straight into 400 m at race pace. 90 s rest.",
+              "cue": "Log total time for all rounds.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-26",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "FULL SIMULATION - Glasgow dress rehearsal",
+          "subtitle": "Glasgow block - Peak - 16 days out",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "12-15 min",
+              "detail": "Easy bike or row, then full dynamic mobility (leg swings, hip openers, ankle rocks, band work), finishing with 2-3 short build-up efforts.",
+              "cue": "This is a maximal-effort day - don't rush this."
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "1000m",
+              "detail": "Race best so far 3:56 (Birmingham). Swap every 250 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push",
+              "pattern": "sledpush",
+              "prescription": "50m",
+              "detail": "Race best so far 3:06 (Birmingham) - check your London split. Swap every lane, keep it moving.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull",
+              "pattern": "sledpull",
+              "prescription": "50m",
+              "detail": "Race best so far 4:35 (Birmingham, incl. penalty). Feet inside the box, swap every lane.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Burpee Broad Jump",
+              "pattern": "burpee",
+              "prescription": "80m",
+              "detail": "Race best so far 3:24 (Birmingham). Swap every 20 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (metres)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": "m"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row",
+              "pattern": "rowerg",
+              "prescription": "1000m",
+              "detail": "Race best so far 4:36 (Birmingham). Swap every 250 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Farmers Carry",
+              "pattern": "carry",
+              "prescription": "200m",
+              "detail": "Race best so far 1:34 (Birmingham). Unbroken.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sandbag Lunges",
+              "pattern": "lunge",
+              "prescription": "100m",
+              "detail": "Race best so far 4:05 (Birmingham). Swap every 25 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Balls",
+              "pattern": "wallball",
+              "prescription": "100 reps",
+              "detail": "Race best so far 4:46 (Birmingham). 6 kg to 3 m, swap every 10.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Log every split",
+              "pattern": "rest",
+              "prescription": "",
+              "detail": "Last full-length test before Glasgow. Compare every split with your best race and practise every partner switch.",
+              "cue": ""
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "10-12 min",
+              "detail": "Easy walk or spin, then extended stretching - hips, hamstrings, shoulders, calves.",
+              "cue": "Prioritise recovery after a maximal effort."
+            }
+          ]
+        },
+        {
+          "date": "2027-02-27",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "50 min easy",
+              "detail": "Easy-to-steady, HR 130-155. Time-on-feet over pace.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-02-28",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest, or 20-30min easy walk + mobility. Protect sleep tonight.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 31,
+      "phase": "Glasgow Block - Peak & Sharpen",
+      "dateRange": "Mar 1 - Mar 7",
+      "days": [
+        {
+          "date": "2027-03-01",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Lower Body + Race-Load Sleds (sharp)",
+          "subtitle": "Glasgow block - Sharpen",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Front Squat",
+              "pattern": "squat",
+              "prescription": "3 x 4",
+              "detail": "RPE 7-8.",
+              "cue": "",
+              "videoQuery": "front squat technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Romanian Deadlift",
+              "pattern": "hinge",
+              "prescription": "3 x 6",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "romanian deadlift technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "6 x 12.5m at 152 kg",
+              "detail": "One lane each with Simon (solo: 45 s rest). Time each lane.",
+              "cue": "Arms locked, hips low, short fast steps. A stopped sled costs more than a slow one.",
+              "videoQuery": "hyrox sled push technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "6 x 12.5m at 103 kg",
+              "detail": "Same format. Time each lane.",
+              "cue": "Sit back, long hand-over-hand pulls, feet inside the box - Birmingham's 30 s penalty came from here.",
+              "videoQuery": "hyrox sled pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sandbag Lunges - 50m repeats",
+              "pattern": "lunge",
+              "prescription": "2 x 50m (20 kg)",
+              "detail": "Unbroken, short steps. 2 min rest.",
+              "cue": "Log your faster 50 m.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Standing Calf Raise",
+              "pattern": "calf",
+              "prescription": "3 x 12",
+              "detail": "Heavy, 2 s pause at the top.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-03-02",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Aerobic Base",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "30 min",
+              "detail": "HR 130-150, ~5:30-6:30/km",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Strides",
+              "pattern": "run",
+              "prescription": "5 x 20 sec",
+              "detail": "Fast-start pace practice (~5:15-5:30/km), full recovery between.",
+              "cue": "Rehearsing a confident opening kilometre - not a Cardiff-style conservative start."
+            }
+          ]
+        },
+        {
+          "date": "2027-03-03",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Upper Body + Wall Balls + Row (sharp)",
+          "subtitle": "Glasgow block - Sharpen",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "8-10 min",
+              "detail": "Easy bike or row, then dynamic mobility - leg swings, hip openers, ankle rocks.",
+              "cue": ""
+            },
+            {
+              "name": "Barbell Bench Press",
+              "pattern": "press",
+              "prescription": "3 x 5",
+              "detail": "RPE 7 - continue your established progression.",
+              "cue": "",
+              "videoQuery": "barbell bench press technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "4 x 6-8",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "weighted pull up technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Face Pull",
+              "pattern": "raise",
+              "prescription": "3 x 15",
+              "detail": "RPE 7.",
+              "cue": "",
+              "videoQuery": "face pull technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Ball EMOM",
+              "pattern": "wallball",
+              "prescription": "8 min: 15 reps every minute",
+              "detail": "6 kg to the 3 m target. Drop to 12 if 15 takes longer than 40 s.",
+              "cue": "Log how many full rounds of 15 you completed.",
+              "videoQuery": "wall ball technique",
+              "log": {
+                "fields": [
+                  {
+                    "key": "rounds",
+                    "label": "Rounds done",
+                    "placeholder": "e.g. 10",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Row Intervals - race pace",
+              "pattern": "rowerg",
+              "prescription": "3 x 500m, 60 s rest",
+              "detail": "Aim ~1:55-2:00/500m.",
+              "cue": "Log your average split.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "8-10 min",
+              "detail": "Easy walk or spin, then static stretching - hips, hamstrings, shoulders.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-03-04",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Race-Pace Compromised Kilometres",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Station + 1km at goal race pace",
+              "pattern": "wallball",
+              "prescription": "4 rounds",
+              "detail": "Rotate: 25 m sled push at 152 kg / 25 wall balls / 25 m sandbag lunges / 20 m burpee broad jumps, each straight into 1 km at 4:40. 2 min rest.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-03-05",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "HALF SIMULATION - Stations 1-4 at race pace",
+          "subtitle": "Glasgow block - Sharpen - 9 days out",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "12-15 min",
+              "detail": "Easy bike or row, then full dynamic mobility (leg swings, hip openers, ankle rocks, band work), finishing with 2-3 short build-up efforts.",
+              "cue": "This is a maximal-effort day - don't rush this."
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "1000m",
+              "detail": "Race best so far 3:56 (Birmingham). Swap every 250 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push",
+              "pattern": "sledpush",
+              "prescription": "50m",
+              "detail": "Race best so far 3:06 (Birmingham) - check your London split. Swap every lane, keep it moving.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull",
+              "pattern": "sledpull",
+              "prescription": "50m",
+              "detail": "Race best so far 4:35 (Birmingham, incl. penalty). Feet inside the box, swap every lane.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "1km Run",
+              "pattern": "run",
+              "prescription": "1km",
+              "detail": "Hold 4:35-4:45 per lap; Run 1 no quicker than 4:50.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Burpee Broad Jump",
+              "pattern": "burpee",
+              "prescription": "80m",
+              "detail": "Race best so far 3:24 (Birmingham). Swap every 20 m.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (metres)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": "m"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Log every split",
+              "pattern": "rest",
+              "prescription": "",
+              "detail": "Full race intensity, half the volume. Last hard session before Glasgow.",
+              "cue": ""
+            },
+            {
+              "name": "Cool-Down + Mobility",
+              "pattern": "core",
+              "prescription": "10-12 min",
+              "detail": "Easy walk or spin, then extended stretching - hips, hamstrings, shoulders, calves.",
+              "cue": "Prioritise recovery after a maximal effort."
+            }
+          ]
+        },
+        {
+          "date": "2027-03-06",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Long Aerobic Run",
+          "subtitle": "Shorter - taper starts Monday",
+          "blocks": [
+            {
+              "name": "Long Aerobic Run",
+              "pattern": "run",
+              "prescription": "40-45 min easy",
+              "detail": "Easy, HR under 150.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-03-07",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Rest / Active Recovery",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest, or an easy walk + the off-day mobility routine.",
+              "cue": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 32,
+      "phase": "Taper & Race 4 - Glasgow",
+      "dateRange": "Mar 8 - Mar 14",
+      "days": [
+        {
+          "date": "2027-03-08",
+          "dayName": "Monday",
+          "sessionType": "gym",
+          "title": "Opener: Lower Body + Sleds",
+          "subtitle": "Taper into Glasgow - crisp, not tiring",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "Front Squat",
+              "pattern": "squat",
+              "prescription": "2 x 3",
+              "detail": "Light - just wake the pattern up.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Push - race load",
+              "pattern": "sledpush",
+              "prescription": "2 x 12.5m at 152 kg",
+              "detail": "Crisp lanes, full rest.",
+              "cue": "Arms locked, hips low, short fast steps.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Sled Pull - race load",
+              "pattern": "sledpull",
+              "prescription": "2 x 12.5m at 103 kg",
+              "detail": "Crisp lanes, full rest.",
+              "cue": "Feet inside the box.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Load",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Wall Balls",
+              "pattern": "wallball",
+              "prescription": "2 x 10",
+              "detail": "Smooth reps to the 3 m target.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Total Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "restTime",
+                    "label": "Rest Interval",
+                    "placeholder": "sec",
+                    "inputmode": "numeric",
+                    "unit": "s"
+                  },
+                  {
+                    "key": "restEvery",
+                    "label": "Per (reps)",
+                    "placeholder": "e.g. 20",
+                    "inputmode": "numeric",
+                    "unit": " reps"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-03-09",
+          "dayName": "Tuesday",
+          "sessionType": "run",
+          "title": "Easy + Strides",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "25 min",
+              "detail": "HR 130-150, ~5:30-6:30/km",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Strides",
+              "pattern": "run",
+              "prescription": "4 x 20 sec",
+              "detail": "Fast-start pace practice (~5:15-5:30/km), full recovery between.",
+              "cue": "Rehearsing a confident opening kilometre - not a Cardiff-style conservative start."
+            }
+          ]
+        },
+        {
+          "date": "2027-03-10",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Opener: Upper Body",
+          "subtitle": "Taper - light activation only",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "Bench Press",
+              "pattern": "press",
+              "prescription": "2 x 4",
+              "detail": "Light.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "2 x 5",
+              "detail": "Bodyweight or light.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "SkiErg",
+              "pattern": "skierg",
+              "prescription": "2 x 250m at race pace",
+              "detail": "Full rest. A reminder of race rhythm.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "power",
+                    "label": "Power Setting",
+                    "placeholder": "e.g. 8",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  },
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-03-11",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Easy + Strides",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "20 min",
+              "detail": "HR 130-150, ~5:30-6:30/km",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Strides",
+              "pattern": "run",
+              "prescription": "3 x 20 sec",
+              "detail": "Fast-start pace practice (~5:15-5:30/km), full recovery between.",
+              "cue": "Rehearsing a confident opening kilometre - not a Cardiff-style conservative start."
+            }
+          ]
+        },
+        {
+          "date": "2027-03-12",
+          "dayName": "Friday",
+          "sessionType": "rest",
+          "title": "Rest",
+          "subtitle": "Fuel-up starts - see the Fuel tab",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Full rest. Carbs step up today.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-03-13",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Pre-Race Shakeout",
+          "subtitle": "Fuel-up day",
+          "blocks": [
+            {
+              "name": "Easy Jog",
+              "pattern": "run",
+              "prescription": "10-15 min",
+              "detail": "Very easy + 2-3 strides. Biggest carb meal at lunch.",
+              "cue": "Early wave? Set your start time on the Fuel tab and an alarm for breakfast.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-03-14",
+          "dayName": "Sunday",
+          "sessionType": "race",
+          "title": "RACE DAY - HYROX Glasgow",
+          "subtitle": "Race 4 of 4 - wave between 08:00 and 12:00",
+          "blocks": [
+            {
+              "name": "HYROX Race 4 - Glasgow",
+              "pattern": "run",
+              "prescription": "Beat your best",
+              "detail": "Runs: 4:35-4:45 laps, Run 1 no quicker than 4:50. Sleds: swap every lane and keep the sled moving; feet inside the box on the pull. Wall balls: swap every 10. Lunges: swap every 25 m.",
+              "cue": "Same plan that worked in Birmingham - the sleds are where the next minute is."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "weekNum": 33,
+      "phase": "Season Recovery",
+      "dateRange": "Mar 15 - Mar 21",
+      "days": [
+        {
+          "date": "2027-03-15",
+          "dayName": "Monday",
+          "sessionType": "rest",
+          "title": "Recovery",
+          "subtitle": "The day after Glasgow",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Easy walk, eat well. Log your Glasgow splits.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-03-16",
+          "dayName": "Tuesday",
+          "sessionType": "rest",
+          "title": "Easy Walk",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "20-30 min walk + the off-day mobility routine.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-03-17",
+          "dayName": "Wednesday",
+          "sessionType": "gym",
+          "title": "Easy Flush",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "Easy bike or row",
+              "pattern": "rowerg",
+              "prescription": "20 min",
+              "detail": "Conversational.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "time",
+                    "label": "Time",
+                    "placeholder": "mm:ss",
+                    "inputmode": "numeric",
+                    "unit": ""
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-03-18",
+          "dayName": "Thursday",
+          "sessionType": "run",
+          "title": "Easy Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "25 min",
+              "detail": "Very easy.",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-03-19",
+          "dayName": "Friday",
+          "sessionType": "gym",
+          "title": "Strength (light)",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Warm-Up",
+              "pattern": "run",
+              "prescription": "5-8 min",
+              "detail": "Easy movement - just enough to feel ready.",
+              "cue": "Keep it light - this session is intentionally shorter this week."
+            },
+            {
+              "name": "Back Squat",
+              "pattern": "squat",
+              "prescription": "3 x 5",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Bench Press",
+              "pattern": "press",
+              "prescription": "3 x 5",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Weighted Pull-up",
+              "pattern": "pullup",
+              "prescription": "3 x 5",
+              "detail": "RPE 6.",
+              "cue": "",
+              "log": {
+                "fields": [
+                  {
+                    "key": "weight",
+                    "label": "Weight",
+                    "placeholder": "kg",
+                    "inputmode": "decimal",
+                    "unit": "kg"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Cool-Down",
+              "pattern": "core",
+              "prescription": "5 min",
+              "detail": "Easy movement + a brief stretch.",
+              "cue": ""
+            }
+          ]
+        },
+        {
+          "date": "2027-03-20",
+          "dayName": "Saturday",
+          "sessionType": "run",
+          "title": "Easy Run",
+          "subtitle": "",
+          "blocks": [
+            {
+              "name": "Easy Aerobic Run",
+              "pattern": "run",
+              "prescription": "30-40 min",
+              "detail": "Easy, no watch.",
+              "cue": "Conversational effort - this run should feel easy.",
+              "log": {
+                "fields": [
+                  {
+                    "key": "distance",
+                    "label": "Distance",
+                    "placeholder": "km",
+                    "inputmode": "decimal",
+                    "unit": "km"
+                  },
+                  {
+                    "key": "hr",
+                    "label": "Avg HR",
+                    "placeholder": "bpm",
+                    "inputmode": "numeric",
+                    "unit": "bpm"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "date": "2027-03-21",
+          "dayName": "Sunday",
+          "sessionType": "rest",
+          "title": "Season Debrief",
+          "subtitle": "Four races done",
+          "blocks": [
+            {
+              "name": "Rest / Active Recovery",
+              "pattern": "rest",
+              "prescription": "Full rest day",
+              "detail": "Compare Birmingham, London, Manchester and Glasgow side by side - what moved and what to build next.",
               "cue": ""
             }
           ]

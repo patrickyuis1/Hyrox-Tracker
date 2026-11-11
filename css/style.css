@@ -1,3 +1,12 @@
+/* Fonts are self-hosted (fonts/, SIL OFL 1.1) so the app works offline. */
+@font-face{ font-family:'Bebas Neue'; font-weight:400; font-style:normal; font-display:swap; src:url(../fonts/bebas-neue-latin-400-normal.woff2) format('woff2'); }
+@font-face{ font-family:'IBM Plex Sans'; font-weight:400; font-style:normal; font-display:swap; src:url(../fonts/ibm-plex-sans-latin-400-normal.woff2) format('woff2'); }
+@font-face{ font-family:'IBM Plex Sans'; font-weight:500; font-style:normal; font-display:swap; src:url(../fonts/ibm-plex-sans-latin-500-normal.woff2) format('woff2'); }
+@font-face{ font-family:'IBM Plex Sans'; font-weight:600; font-style:normal; font-display:swap; src:url(../fonts/ibm-plex-sans-latin-600-normal.woff2) format('woff2'); }
+@font-face{ font-family:'IBM Plex Sans'; font-weight:700; font-style:normal; font-display:swap; src:url(../fonts/ibm-plex-sans-latin-700-normal.woff2) format('woff2'); }
+@font-face{ font-family:'IBM Plex Mono'; font-weight:500; font-style:normal; font-display:swap; src:url(../fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2'); }
+@font-face{ font-family:'IBM Plex Mono'; font-weight:600; font-style:normal; font-display:swap; src:url(../fonts/ibm-plex-mono-latin-600-normal.woff2) format('woff2'); }
+
 /* ===================================================================
    HYROX DAILY — design tokens
    Dark, data-dense "split board" aesthetic: motivated by early-morning /
@@ -337,3 +346,219 @@ a{ color:inherit; }
   .day-heading .dh-name{ font-size:38px; }
   .session-title{ font-size:30px; }
 }
+
+/* ===================================================================
+   v4 — tabs (Plan / Fuel / Mobility), routine sheet, fuel + mobility views
+   Two new accents, used only inside their own views:
+   fluid sky-blue for anything you drink, grain-gold for carbohydrate.
+   Mobility pictograms take a soft violet so they never read as a
+   session you need to tick off.
+   =================================================================== */
+:root{
+  --fluid:  #5EC8F2;
+  --fluid-dim: #1C4A5C;
+  --carb:   #F2C14E;
+  --carb-dim: #5C4A1C;
+  --mob:    #A78BFA;
+  --mob-dim:#3B3159;
+  --tabbar-h: 64px;
+}
+[hidden]{ display:none !important; }
+body{ padding-bottom: calc(var(--tabbar-h) + 28px + env(safe-area-inset-bottom)); }
+body.sheet-open{ overflow:hidden; }
+
+.header-actions .today-btn[hidden]{ display:none !important; }
+
+/* ---------- tab bar ---------- */
+.tabbar{
+  position:fixed; left:0; right:0; bottom:0; z-index:30;
+  display:flex; justify-content:center; gap:4px;
+  padding:6px 12px calc(6px + env(safe-area-inset-bottom));
+  background:rgba(13,14,16,.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-top:1px solid var(--border-soft);
+}
+.tab{
+  flex:1; max-width:200px; display:flex; flex-direction:column; align-items:center; gap:3px;
+  background:none; border:none; color:var(--text-faint); padding:7px 4px; border-radius:var(--radius-sm);
+  font-size:11px; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
+}
+.tab svg{ width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.tab:hover{ color:var(--text-dim); }
+.tab.is-active{ color:var(--text); }
+.tab.is-active svg{ stroke:var(--gym); }
+.tab[data-tab="fuel"].is-active svg{ stroke:var(--fluid); }
+.tab[data-tab="mobility"].is-active svg{ stroke:var(--mob); }
+
+/* ---------- shared view heading ---------- */
+.view-head{ padding:6px 2px 16px; }
+.eyebrow{ font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint); margin-bottom:4px; }
+.view-title{ font-family:var(--font-display); font-size:32px; letter-spacing:.4px; line-height:1.02; font-weight:400; }
+.view-sub{ font-size:13px; color:var(--text-dim); margin-top:6px; }
+
+/* ---------- routine links inside the Plan view ---------- */
+.routine-link{
+  display:inline-flex; align-items:center; gap:4px; margin-top:7px; margin-right:12px;
+  background:none; border:none; padding:0; color:var(--mob); font-size:12px; font-weight:600;
+  border-bottom:1px solid var(--mob-dim);
+}
+.routine-link:hover{ border-color:var(--mob); }
+.session-links{ display:flex; flex-wrap:wrap; gap:8px; margin:-8px 0 18px; }
+.routine-link.pill{
+  margin:0; padding:6px 11px; border:1px solid var(--mob-dim); border-radius:999px; background:rgba(167,139,250,.06);
+}
+.routine-link.pill[data-open-fuel]{ color:var(--fluid); border-color:var(--fluid-dim); background:rgba(94,200,242,.06); }
+
+/* ---------- fuel card on the Plan view ---------- */
+.fuel-today{
+  width:100%; display:flex; align-items:center; gap:12px; text-align:left; margin-bottom:14px;
+  background:linear-gradient(90deg, rgba(94,200,242,.08), rgba(242,193,78,.05)); color:var(--text);
+  border:1px solid var(--fluid-dim); border-radius:var(--radius-sm); padding:11px 14px;
+}
+.ft-off{ flex:none; font-family:var(--font-display); font-size:22px; color:var(--fluid); min-width:42px; }
+.ft-body{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.ft-title{ font-size:12.5px; font-weight:700; }
+.ft-line{ font-size:12px; color:var(--text-dim); }
+.ft-line b{ color:var(--text); font-family:var(--font-mono); font-weight:500; }
+.ft-go{ flex:none; font-size:20px; color:var(--text-faint); }
+
+/* ---------- routine sheet ---------- */
+.sheet{ position:fixed; inset:0; z-index:50; display:flex; align-items:flex-end; justify-content:center; }
+.sheet-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.62); }
+.sheet-panel{
+  position:relative; width:100%; max-width:var(--container); max-height:88vh; overflow:auto;
+  background:var(--surface); border:1px solid var(--border); border-bottom:none;
+  border-radius:18px 18px 0 0; padding:8px 16px calc(20px + env(safe-area-inset-bottom));
+  animation: sheet-up .22s ease-out;
+}
+@keyframes sheet-up{ from{ transform:translateY(24px); opacity:.6; } to{ transform:none; opacity:1; } }
+.sheet-grip{ width:38px; height:4px; border-radius:4px; background:var(--border); margin:2px auto 10px; }
+.sheet-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; position:sticky; top:-8px; background:var(--surface); padding:4px 0 10px; z-index:1; }
+.sheet-title{ font-family:var(--font-display); font-size:28px; font-weight:400; letter-spacing:.4px; line-height:1; }
+.sheet-meta{ font-size:12.5px; color:var(--text-dim); margin-top:4px; }
+.sheet-close{ flex:none; width:36px; height:36px; border-radius:50%; background:var(--surface-2); border:1px solid var(--border); color:var(--text); font-size:20px; line-height:1; }
+
+/* ---------- routine moves (sheet + Mobility tab) ---------- */
+.moves{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+.move{ display:flex; gap:14px; align-items:center; background:var(--surface-2); border-radius:var(--radius-sm); padding:10px 12px; }
+.move-ic{ flex:none; width:64px; height:70px; color:var(--mob); background:rgba(167,139,250,.07); border-radius:10px; padding:6px 8px; }
+.move-body{ flex:1; min-width:0; }
+.move-top{ display:flex; align-items:baseline; gap:8px; }
+.move-n{ font-family:var(--font-mono); font-size:11px; color:var(--text-faint); }
+.move-name{ font-size:14.5px; font-weight:600; }
+.move-dose{ font-family:var(--font-mono); font-size:13px; color:var(--mob); margin-top:2px; }
+.move-cue{ font-size:12px; color:var(--text-dim); margin-top:3px; }
+
+/* ---------- Mobility tab ---------- */
+.routine-chips, .race-chips{ display:flex; gap:6px; overflow-x:auto; padding-bottom:4px; margin-bottom:14px; scrollbar-width:none; }
+.routine-chips::-webkit-scrollbar, .race-chips::-webkit-scrollbar, .day-chips::-webkit-scrollbar{ display:none; }
+.routine-chip, .race-chip{
+  flex:none; background:var(--surface); border:1px solid var(--border); color:var(--text-dim);
+  font-size:12.5px; font-weight:600; padding:8px 13px; border-radius:999px;
+}
+.routine-chip.is-on{ color:var(--text); border-color:var(--mob); background:rgba(167,139,250,.1); }
+.routine-card, .fuel-day, .fuel-card{
+  background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--radius); padding:18px 16px; margin-bottom:14px;
+}
+.routine-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+.routine-name{ font-family:var(--font-display); font-size:26px; font-weight:400; letter-spacing:.3px; }
+.routine-dur{ font-family:var(--font-mono); font-size:13px; color:var(--mob); white-space:nowrap; }
+.routine-when{ font-size:12.5px; color:var(--text-dim); margin:4px 0 14px; }
+
+/* ---------- Fuel tab ---------- */
+.race-chip{ display:flex; flex-direction:column; align-items:flex-start; gap:1px; border-radius:var(--radius-sm); }
+.race-chip span{ font-family:var(--font-mono); font-size:10.5px; color:var(--text-faint); font-weight:500; }
+.race-chip.is-on{ color:var(--text); border-color:var(--fluid); background:rgba(94,200,242,.08); }
+
+.fuel-settings{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+.fs-field{ flex:1 1 140px; display:flex; flex-direction:column; gap:5px; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-faint); }
+.fs-input{ display:flex; align-items:center; gap:6px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0 12px; }
+.fs-input input{ flex:1; min-width:0; background:none; border:none; color:var(--text); font-family:var(--font-mono); font-size:16px; padding:10px 0; color-scheme:dark; }
+.fs-input input:focus{ outline:none; }
+.fs-input:focus-within{ border-color:var(--fluid); }
+.fs-input em{ font-style:normal; color:var(--text-faint); font-size:12px; text-transform:none; letter-spacing:0; }
+.fs-note{ flex-basis:100%; font-size:12px; color:var(--text-dim); }
+
+.day-chips{ display:flex; gap:6px; overflow-x:auto; padding-bottom:4px; margin-bottom:12px; scrollbar-width:none; }
+.day-chip{
+  flex:none; min-width:58px; display:flex; flex-direction:column; align-items:center; gap:2px;
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:7px 8px; color:var(--text-dim);
+}
+.dc-off{ font-family:var(--font-display); font-size:18px; line-height:1; letter-spacing:.3px; }
+.dc-date{ font-size:10.5px; font-family:var(--font-mono); }
+.day-chip.is-on{ color:var(--text); border-color:var(--fluid); background:rgba(94,200,242,.1); }
+.day-chip.is-race .dc-off{ color:var(--race); }
+.day-chip.is-today{ box-shadow:inset 0 -2px 0 var(--text); }
+
+.fd-head{ display:flex; align-items:center; gap:14px; }
+.fd-off{ flex:none; font-family:var(--font-display); font-size:34px; line-height:1; color:var(--fluid); min-width:54px; }
+.fuel-day.is-race .fd-off{ color:var(--race); }
+.fd-title{ font-family:var(--font-display); font-size:26px; font-weight:400; letter-spacing:.3px; line-height:1; }
+.fd-meta{ font-size:12px; color:var(--text-dim); margin-top:4px; }
+.fd-focus{ font-size:13.5px; color:var(--text); margin:14px 0; line-height:1.5; }
+
+.tiles{ display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; margin-bottom:12px; }
+@media (min-width:520px){ .tiles{ grid-template-columns:repeat(4, 1fr); } }
+.tile{ background:var(--surface-2); border-radius:var(--radius-sm); padding:10px 12px; border-top:2px solid var(--border); }
+.tile.is-carb{ border-top-color:var(--carb); }
+.tile.is-fluid{ border-top-color:var(--fluid); }
+.tile-label{ font-size:10.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--text-faint); }
+.tile-value{ font-family:var(--font-mono); font-size:15px; font-weight:600; margin-top:4px; line-height:1.3; }
+.tile-sub{ font-size:11px; color:var(--text-dim); margin-top:2px; }
+
+.fibre-line{ display:flex; gap:8px; align-items:baseline; font-size:12.5px; color:var(--text-dim); margin-bottom:10px; }
+.fibre-line span{ font-size:10.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--text-faint); }
+.meal-hint{ font-size:12px; color:var(--text-faint); margin-bottom:6px; }
+.meal{ border-top:1px solid var(--border-soft); padding-top:12px; margin-top:12px; }
+.meal-slot{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--carb); margin-bottom:6px; }
+.meal-opts{ list-style:none; display:flex; flex-direction:column; gap:6px; }
+.meal-opts li{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; font-size:13px; }
+.mo-text{ color:var(--text); }
+.mo-macros{ flex:none; font-family:var(--font-mono); font-size:11.5px; color:var(--text-faint); white-space:nowrap; }
+
+.fuel-h3{ font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dim); margin:16px 0 10px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.variant-tag{ font-size:10.5px; color:var(--fluid); border:1px solid var(--fluid-dim); padding:2px 8px; border-radius:999px; letter-spacing:.04em; }
+.timeline{ list-style:none; position:relative; }
+.tl-item{ display:flex; gap:14px; position:relative; padding-bottom:16px; }
+.tl-item::before{ content:''; position:absolute; left:52px; top:22px; bottom:-2px; width:2px; background:var(--border); }
+.tl-item:last-child::before{ display:none; }
+.tl-time{ flex:none; width:46px; display:flex; flex-direction:column; align-items:flex-end; }
+.tl-clock{ font-family:var(--font-mono); font-size:14px; font-weight:600; color:var(--fluid); }
+.tl-rel{ font-size:9.5px; color:var(--text-faint); text-align:right; line-height:1.2; margin-top:2px; }
+.tl-body{ flex:1; min-width:0; padding-left:14px; position:relative; }
+.tl-body::before{ content:''; position:absolute; left:-2px; top:6px; width:8px; height:8px; border-radius:50%; background:var(--fluid); }
+.tl-item.is-start .tl-clock{ color:var(--race); }
+.tl-item.is-start .tl-body::before{ background:var(--race); width:10px; height:10px; left:-3px; top:5px; }
+.tl-title{ font-size:14px; font-weight:600; }
+.tl-detail{ font-size:12.5px; color:var(--text-dim); margin-top:2px; }
+.tl-body .meal-opts{ margin-top:8px; background:var(--surface-2); border-radius:var(--radius-sm); padding:8px 10px; }
+
+.fc-title{ font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); margin-bottom:10px; }
+.supps dt{ font-size:13.5px; font-weight:600; margin-top:10px; }
+.supps dt:first-child{ margin-top:0; }
+.supps dd{ font-size:12.5px; color:var(--text-dim); margin-top:2px; }
+.rules{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+.rules li{ font-size:13px; color:var(--text); padding-left:16px; position:relative; }
+.rules li::before{ content:''; position:absolute; left:2px; top:8px; width:6px; height:6px; border-radius:50%; background:var(--fluid); }
+
+/* ---------- backup panel (profile screen) ---------- */
+.data-box{ margin-top:34px; text-align:left; background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--radius); padding:16px; }
+.data-title{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); }
+.data-sub{ font-size:12.5px; color:var(--text-dim); margin:6px 0 12px; line-height:1.45; }
+.data-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+.data-btn{
+  flex:1 1 140px; text-align:center; cursor:pointer; background:var(--surface-2); border:1px solid var(--border);
+  color:var(--text); font-size:13px; font-weight:600; padding:10px 12px; border-radius:var(--radius-sm); font-family:inherit;
+}
+.data-btn:hover{ border-color:var(--gym); }
+
+.data-status{ font-size:12px; color:var(--gym); margin-top:10px; min-height:1em; }
+.data-status.is-error{ color:var(--race); }
+
+/* ---------- install banner ---------- */
+.install-banner{
+  display:flex; align-items:center; gap:10px; margin-bottom:14px; padding:10px 12px;
+  background:var(--surface); border:1px solid var(--gym-dim); border-radius:var(--radius-sm); font-size:12.5px; color:var(--text-dim);
+}
+.install-banner span{ flex:1; }
+.install-btn{ flex:none; background:var(--gym); color:#04231F; border:none; font-weight:700; font-size:12.5px; padding:8px 14px; border-radius:999px; }
+.install-x{ flex:none; background:none; border:none; color:var(--text-faint); font-size:18px; line-height:1; padding:4px; }
